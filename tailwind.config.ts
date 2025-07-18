@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				arabic: ['Noto Sans Arabic', 'Arial', 'sans-serif'],
+				latin: ['Inter', 'Segoe UI', 'system-ui', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +65,25 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				golden: {
+					primary: 'hsl(var(--golden-primary))',
+					secondary: 'hsl(var(--golden-secondary))',
+					light: 'hsl(var(--golden-light))'
 				}
+			},
+			backgroundImage: {
+				'gradient-golden': 'var(--gradient-golden)',
+				'gradient-golden-hover': 'var(--gradient-golden-hover)',
+				'gradient-dark': 'var(--gradient-dark)'
+			},
+			boxShadow: {
+				'golden': 'var(--shadow-golden)',
+				'elegant': 'var(--shadow-elegant)'
+			},
+			transitionProperty: {
+				'smooth': 'var(--transition-smooth)',
+				'quick': 'var(--transition-quick)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

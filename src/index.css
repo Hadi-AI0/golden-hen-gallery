@@ -8,35 +8,56 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Brand Colors - Poultry Theme */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 160 40% 15%;
+    
+    /* Dark Green Primary Brand Color */
+    --primary: 160 70% 12%;
+    --primary-foreground: 45 100% 85%;
+    
+    /* Golden Gradient Colors */
+    --golden-primary: 45 85% 55%;
+    --golden-secondary: 42 95% 65%;
+    --golden-light: 48 100% 75%;
+    
+    /* Supporting Colors */
+    --secondary: 160 15% 20%;
+    --secondary-foreground: 45 50% 90%;
+    
+    --muted: 160 10% 95%;
+    --muted-foreground: 160 15% 40%;
+    
+    --accent: 45 85% 55%;
+    --accent-foreground: 160 70% 12%;
+    
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 160 40% 15%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --popover-foreground: 160 40% 15%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 160 15% 85%;
+    --input: 160 10% 92%;
+    --ring: 45 85% 55%;
+    
+    /* Brand Gradients */
+    --gradient-golden: linear-gradient(135deg, hsl(var(--golden-primary)), hsl(var(--golden-secondary)));
+    --gradient-golden-hover: linear-gradient(135deg, hsl(var(--golden-secondary)), hsl(var(--golden-light)));
+    --gradient-dark: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    
+    /* Shadows */
+    --shadow-golden: 0 4px 14px 0 hsl(var(--golden-primary) / 0.25);
+    --shadow-elegant: 0 8px 30px -4px hsl(var(--primary) / 0.15);
+    
+    /* Animation Variables */
+    --transition-smooth: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-quick: all 200ms ease-in-out;
+    
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +121,107 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  /* Typography for Arabic/Latin support */
+  .font-arabic {
+    font-family: 'Noto Sans Arabic', 'Arial', sans-serif;
+  }
+  
+  .font-latin {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+  
+  /* Animation Classes */
+  .animate-fade-up {
+    animation: fadeUp 300ms ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 250ms ease-out;
+  }
+  
+  .hover-lift {
+    transition: var(--transition-quick);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-golden);
+  }
+  
+  /* Golden Gradient Button */
+  .btn-golden {
+    background: var(--gradient-golden);
+    color: hsl(var(--primary));
+    transition: var(--transition-quick);
+    border-radius: var(--radius);
+    font-weight: 600;
+    box-shadow: var(--shadow-golden);
+  }
+  
+  .btn-golden:hover {
+    background: var(--gradient-golden-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  /* 3D Model Container */
+  .model-container {
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--gradient-dark);
+  }
+  
+  /* Scroll reveal */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 300ms ease-out, transform 300ms ease-out;
+  }
+  
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    
+    .hover-lift:hover {
+      transform: none;
+    }
+    
+    .btn-golden:hover {
+      transform: none;
+    }
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
