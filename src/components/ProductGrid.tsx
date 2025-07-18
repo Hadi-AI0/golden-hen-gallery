@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -10,11 +11,10 @@ const products: Product[] = [
     id: '1',
     nameEn: 'Whole Chicken',
     nameAr: 'دجاج كامل',
-    descriptionEn: 'Fresh whole chicken, perfect for family meals',
-    descriptionAr: 'دجاج كامل طازج، مثالي لوجبات العائلة',
-    image: '/lovable-uploads/ab8fe531-3541-4806-88e9-dfdf8c3f098c.png',
-    price: '25 SAR',
-    whatsappMessage: 'Hi! I would like to order a whole fresh chicken.'
+    descriptionEn: 'Fresh whole chicken, perfect for restaurants',
+    descriptionAr: 'دجاج كامل طازج، مثالي للمطاعم',
+    image: 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=400&h=400&fit=crop&crop=center',
+    whatsappMessage: 'Hi! I would like to inquire about wholesale pricing for whole fresh chicken.'
   },
   {
     id: '2',
@@ -22,9 +22,8 @@ const products: Product[] = [
     nameAr: 'قطع متبلة',
     descriptionEn: 'Pre-seasoned chicken cuts ready to cook',
     descriptionAr: 'قطع دجاج متبلة جاهزة للطبخ',
-    image: '/lovable-uploads/b83dab92-4488-4b11-a28a-fccfb11a063f.png',
-    price: '30 SAR',
-    whatsappMessage: 'Hello! I am interested in your marinated chicken cuts.'
+    image: 'https://images.unsplash.com/photo-1598103442097-9c6d5b2e5d3a?w=400&h=400&fit=crop&crop=center',
+    whatsappMessage: 'Hello! I am interested in bulk orders for marinated chicken cuts.'
   },
   {
     id: '3',
@@ -32,19 +31,26 @@ const products: Product[] = [
     nameAr: 'قطع طازجة',
     descriptionEn: 'Premium chicken cuts for versatile cooking',
     descriptionAr: 'قطع دجاج مميزة للطبخ المتنوع',
-    image: '/lovable-uploads/4f95bf68-a406-4c23-9f4e-314b3786331a.png',
-    price: '28 SAR',
-    whatsappMessage: 'Hi! I want to order fresh chicken cuts.'
+    image: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&h=400&fit=crop&crop=center',
+    whatsappMessage: 'Hi! I want to order fresh chicken cuts for my restaurant.'
   },
   {
     id: '4',
+    nameEn: 'Shawarma Cuts',
+    nameAr: 'لحم الشاورما',
+    descriptionEn: 'Specially prepared chicken for shawarma',
+    descriptionAr: 'دجاج محضر خصيصاً للشاورما',
+    image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&h=400&fit=crop&crop=center',
+    whatsappMessage: 'Hello! I would like to know about shawarma chicken wholesale pricing.'
+  },
+  {
+    id: '5',
     nameEn: 'Premium Selection',
     nameAr: 'التشكيلة المميزة',
-    descriptionEn: 'Curated mix of our finest cuts',
-    descriptionAr: 'مجموعة منتقاة من أفضل القطع لدينا',
-    image: '/lovable-uploads/ab8fe531-3541-4806-88e9-dfdf8c3f098c.png',
-    price: '45 SAR',
-    whatsappMessage: 'Hello! I would like to know more about your premium selection.'
+    descriptionEn: 'Curated mix of our finest cuts for restaurants',
+    descriptionAr: 'مجموعة منتقاة من أفضل القطع للمطاعم',
+    image: 'https://images.unsplash.com/photo-1598511726623-d2e9996892f0?w=400&h=400&fit=crop&crop=center',
+    whatsappMessage: 'Hello! I would like to know more about your premium selection for restaurants.'
   }
 ];
 
@@ -83,17 +89,17 @@ const ProductGrid = () => {
         {/* Section Header */}
         <div className={`text-center mb-16 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            {t.products}
+            {isRTL ? 'منتجاتنا' : 'Our Products'}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {isRTL 
-              ? 'اكتشف مجموعتنا المتنوعة من منتجات الدجاج الطازجة وعالية الجودة'
-              : 'Discover our diverse range of fresh, high-quality poultry products'
+              ? 'اكتشف مجموعتنا المتنوعة من منتجات الدجاج الطازجة وعالية الجودة المخصصة للمطاعم والمتاجر'
+              : 'Discover our diverse range of fresh, high-quality poultry products designed for restaurants and retailers'
             }
           </p>
         </div>
 
-        {/* Products Grid - Smaller, Elegant Cards */}
+        {/* Products Grid */}
         <div 
           ref={gridRef}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
@@ -122,15 +128,9 @@ const ProductGrid = () => {
                 <CardTitle className="text-sm font-bold text-primary mb-1 group-hover:text-golden-primary transition-colors line-clamp-1">
                   {isRTL ? product.nameAr : product.nameEn}
                 </CardTitle>
-                <CardDescription className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                <CardDescription className="text-xs text-muted-foreground mb-3 line-clamp-2">
                   {isRTL ? product.descriptionAr : product.descriptionEn}
                 </CardDescription>
-                
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-bold text-golden-primary">
-                    {product.price}
-                  </span>
-                </div>
 
                 <Button
                   onClick={() => handleWhatsAppOrder(
@@ -141,7 +141,7 @@ const ProductGrid = () => {
                   className="w-full btn-golden hover-lift group/btn text-xs py-1"
                 >
                   <MessageCircle className={`h-3 w-3 ${isRTL ? 'ml-1' : 'mr-1'} group-hover/btn:scale-110 transition-transform`} />
-                  {isRTL ? 'اشترِ عبر واتساب' : 'Order via WhatsApp'}
+                  {isRTL ? 'استفسار تجاري' : 'Business Inquiry'}
                 </Button>
               </CardContent>
             </Card>
@@ -155,7 +155,7 @@ const ProductGrid = () => {
             size="lg"
             className="hover-lift border-golden-primary text-golden-primary hover:bg-golden-primary hover:text-primary"
           >
-            {t.viewAll}
+            {isRTL ? 'عرض كافة المنتجات' : 'View All Products'}
           </Button>
         </div>
       </div>

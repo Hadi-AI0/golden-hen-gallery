@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Shield, Heart, Truck } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -10,22 +11,22 @@ const AboutSection = () => {
       icon: Shield,
       titleEn: 'Quality Assurance',
       titleAr: 'ضمان الجودة',
-      descriptionEn: 'Every product meets our strict quality standards',
-      descriptionAr: 'كل منتج يلبي معايير الجودة الصارمة لدينا'
+      descriptionEn: 'Every product meets strict food service standards',
+      descriptionAr: 'كل منتج يلبي معايير الخدمات الغذائية الصارمة'
     },
     {
       icon: Heart,
-      titleEn: 'Family Trusted',
-      titleAr: 'ثقة العائلات',
-      descriptionEn: 'Serving Saudi families for over a decade',
-      descriptionAr: 'نخدم العائلات السعودية لأكثر من عقد'
+      titleEn: 'Trusted Partner',
+      titleAr: 'شريك موثوق',
+      descriptionEn: 'Serving restaurants and retailers across Saudi Arabia',
+      descriptionAr: 'نخدم المطاعم والمتاجر في جميع أنحاء المملكة العربية السعودية'
     },
     {
       icon: Truck,
-      titleEn: 'Fresh Delivery',
-      titleAr: 'توصيل طازج',
-      descriptionEn: 'Temperature-controlled delivery to your door',
-      descriptionAr: 'توصيل مبرد إلى باب منزلك'
+      titleEn: 'Reliable Supply',
+      titleAr: 'توريد موثوق',
+      descriptionEn: 'Consistent delivery schedules for your business needs',
+      descriptionAr: 'جداول توصيل ثابتة لاحتياجات عملكم'
     }
   ];
 
@@ -37,18 +38,18 @@ const AboutSection = () => {
           <div className={`space-y-8 ${isRTL ? 'lg:order-2' : ''}`}>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-golden-light">
-                {t.ourStory}
+                {isRTL ? 'قصتنا' : 'Our Story'}
               </h2>
               <p className="text-lg leading-relaxed text-white/90 mb-6">
                 {isRTL 
-                  ? 'منذ أكثر من عقد، بدأت رحلتنا بهدف بسيط: تقديم أفضل أنواع الدجاج الطازج للعائلات في المملكة العربية السعودية. نحن نؤمن بأن الجودة لا تقبل المساومة.'
-                  : 'For over a decade, our journey began with a simple goal: to provide the finest fresh poultry to families across Saudi Arabia. We believe that quality should never be compromised.'
+                  ? 'منذ أكثر من عقد، بدأت رحلتنا بهدف بسيط: تقديم أفضل أنواع الدجاج الطازج للمطاعم والمتاجر في المملكة العربية السعودية. نحن نؤمن بأن الجودة لا تقبل المساومة في قطاع الأعمال.'
+                  : 'For over a decade, our journey began with a simple goal: to provide the finest fresh poultry to restaurants and retailers across Saudi Arabia. We believe that quality should never be compromised in business.'
                 }
               </p>
               <p className="text-lg leading-relaxed text-white/90">
                 {isRTL 
-                  ? 'من خلال شراكتنا مع أفضل المزارع المحلية والالتزام بأعلى معايير الجودة والسلامة، نحن نضمن وصول منتجات طازجة وصحية إلى مائدتكم كل يوم.'
-                  : 'Through partnerships with the finest local farms and commitment to the highest quality and safety standards, we ensure fresh, healthy products reach your table every day.'
+                  ? 'من خلال شراكتنا مع أفضل المزارع المحلية والالتزام بأعلى معايير الجودة والسلامة، نحن نضمن وصول منتجات طازجة وصحية إلى مطاعمكم ومتاجركم كل يوم.'
+                  : 'Through partnerships with the finest local farms and commitment to the highest quality and safety standards, we ensure fresh, healthy products reach your restaurants and stores every day.'
                 }
               </p>
             </div>
@@ -81,8 +82,8 @@ const AboutSection = () => {
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-golden p-8">
                 <img
-                  src="/lovable-uploads/4f95bf68-a406-4c23-9f4e-314b3786331a.png"
-                  alt={isRTL ? 'شعارنا الذهبي' : 'Our Golden Logo'}
+                  src="/lovable-uploads/6b8f2215-fce7-4106-872a-66dbdbebf287.png"
+                  alt={isRTL ? 'شعارنا المميز' : 'Our Business Mascot'}
                   className="w-full h-full object-contain animate-fade-in"
                 />
               </div>

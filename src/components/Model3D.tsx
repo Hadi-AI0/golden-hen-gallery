@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import spatchcockedChicken from '@/assets/spatchcocked-chicken.png';
@@ -10,12 +11,12 @@ const SignatureProductSection = () => {
       <div className="container mx-auto px-4">
         <div className={`text-center mb-12 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            {isRTL ? 'منتجنا المميز' : 'Our Signature Product'}
+            {isRTL ? 'منتجنا المميز للمطاعم' : 'Our Signature Product for Restaurants'}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {isRTL 
-              ? 'دجاج مسطح عالي الجودة، مُحضّر بعناية فائقة لأفضل تجربة طهي'
-              : 'Premium spatchcocked chicken, carefully prepared for the ultimate cooking experience'
+              ? 'دجاج مسطح عالي الجودة، مُحضّر بعناية فائقة للمطاعم والمتاجر'
+              : 'Premium spatchcocked chicken, carefully prepared for restaurants and retailers'
             }
           </p>
         </div>
@@ -38,12 +39,12 @@ const SignatureProductSection = () => {
           {/* Content */}
           <div className={`flex-1 space-y-6 ${isRTL ? 'font-arabic text-right' : 'font-latin text-left'}`}>
             <h3 className="text-2xl md:text-3xl font-bold text-primary">
-              {isRTL ? 'جودة لا تُضاهى' : 'Unmatched Quality'}
+              {isRTL ? 'جودة تجارية لا تُضاهى' : 'Unmatched Commercial Quality'}
             </h3>
             <p className="text-lg text-muted-foreground leading-relaxed">
               {isRTL 
-                ? 'نحن نفخر بتقديم أفضل أنواع الدجاج الطازج من مزارع محلية مختارة بعناية. كل منتج يمر بفحوصات جودة صارمة لضمان وصول أفضل ما لديكم.'
-                : 'We take pride in delivering the finest fresh poultry from carefully selected local farms. Every product undergoes rigorous quality checks to ensure you receive only the best.'
+                ? 'نحن نفخر بتقديم أفضل أنواع الدجاج الطازج من مزارع محلية مختارة بعناية للمطاعم والمتاجر. كل منتج يمر بفحوصات جودة صارمة لضمان أعلى المعايير التجارية.'
+                : 'We take pride in delivering the finest fresh poultry from carefully selected local farms to restaurants and retailers. Every product undergoes rigorous quality checks to ensure the highest commercial standards.'
               }
             </p>
             <div className="space-y-4">
@@ -51,12 +52,12 @@ const SignatureProductSection = () => {
                 <div className="w-2 h-2 bg-golden-primary rounded-full mt-2 flex-shrink-0"></div>
                 <div>
                   <h4 className="font-semibold text-primary">
-                    {isRTL ? 'طازج يومياً' : 'Fresh Daily'}
+                    {isRTL ? 'توريد يومي منتظم' : 'Regular Daily Supply'}
                   </h4>
                   <p className="text-muted-foreground">
                     {isRTL 
-                      ? 'توريد يومي من المزارع المحلية المختارة'
-                      : 'Daily supply from selected local farms'
+                      ? 'جداول توصيل ثابتة من المزارع المحلية'
+                      : 'Consistent delivery schedules from local farms'
                     }
                   </p>
                 </div>
@@ -65,12 +66,12 @@ const SignatureProductSection = () => {
                 <div className="w-2 h-2 bg-golden-primary rounded-full mt-2 flex-shrink-0"></div>
                 <div>
                   <h4 className="font-semibold text-primary">
-                    {isRTL ? 'فحوصات جودة' : 'Quality Inspections'}
+                    {isRTL ? 'معايير تجارية صارمة' : 'Strict Commercial Standards'}
                   </h4>
                   <p className="text-muted-foreground">
                     {isRTL 
-                      ? 'معايير صارمة للجودة والسلامة'
-                      : 'Strict quality and safety standards'
+                      ? 'فحوصات جودة شاملة للمطاعم والمتاجر'
+                      : 'Comprehensive quality checks for restaurants and retailers'
                     }
                   </p>
                 </div>
@@ -79,12 +80,12 @@ const SignatureProductSection = () => {
                 <div className="w-2 h-2 bg-golden-primary rounded-full mt-2 flex-shrink-0"></div>
                 <div>
                   <h4 className="font-semibold text-primary">
-                    {isRTL ? 'توصيل سريع' : 'Fast Delivery'}
+                    {isRTL ? 'أسعار الجملة' : 'Wholesale Pricing'}
                   </h4>
                   <p className="text-muted-foreground">
                     {isRTL 
-                      ? 'خدمة توصيل سريعة ومبردة'
-                      : 'Quick and refrigerated delivery service'
+                      ? 'أسعار تنافسية للشركاء التجاريين'
+                      : 'Competitive pricing for business partners'
                     }
                   </p>
                 </div>

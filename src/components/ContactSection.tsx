@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { MapPin, Clock, Phone, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -9,20 +10,20 @@ const ContactSection = () => {
 
   const location = {
     id: '1',
-    nameEn: 'Riyadh - Main Branch',
-    nameAr: 'الرياض - الفرع الرئيسي',
-    addressEn: 'King Fahd Road, Al Malaz District, Riyadh 12612',
-    addressAr: 'طريق الملك فهد، حي الملز، الرياض 12612',
-    phone: '+966 11 234 5678',
-    hours: isRTL ? 'السبت - الخميس: 8:00 ص - 10:00 م' : 'Sat - Thu: 8:00 AM - 10:00 PM',
-    whatsapp: '966112345678',
-    mapUrl: 'https://maps.google.com/?q=24.7136,46.6753'
+    nameEn: 'Dammam - Main Branch',
+    nameAr: 'الدمام - الفرع الرئيسي',
+    addressEn: 'Ahd Alyoom District, Dammam, Saudi Arabia',
+    addressAr: 'حي عهد اليوم، الدمام، المملكة العربية السعودية',
+    phone: '+966 13 123 4567',
+    hours: isRTL ? 'السبت - الخميس: 6:00 ص - 8:00 م' : 'Sat - Thu: 6:00 AM - 8:00 PM',
+    whatsapp: '966131234567',
+    mapUrl: 'https://maps.google.com/?q=26.422185032368574,50.01926195708667'
   };
 
   const handleWhatsAppContact = (whatsappNumber: string, locationName: string) => {
     const message = isRTL 
-      ? `مرحباً! أود الاستفسار عن خدمات عهد اليوم في ${locationName}`
-      : `Hello! I would like to inquire about ahd alyoom services at ${locationName}`;
+      ? `مرحباً! أود الاستفسار عن أسعار الجملة وخدمات الشركاء التجاريين في ${locationName}`
+      : `Hello! I would like to inquire about wholesale pricing and business partnership services at ${locationName}`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
@@ -33,18 +34,18 @@ const ContactSection = () => {
         {/* Section Header */}
         <div className={`text-center mb-16 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            {t.contact}
+            {isRTL ? 'اتصل بنا' : 'Contact Us'}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {isRTL 
-              ? 'زوروا أحد فروعنا أو تواصلوا معنا عبر واتساب للطلب والاستفسار'
-              : 'Visit one of our branches or contact us via WhatsApp for orders and inquiries'
+              ? 'زوروا فرعنا أو تواصلوا معنا عبر واتساب للاستفسار عن أسعار الجملة والشراكات التجارية'
+              : 'Visit our branch or contact us via WhatsApp for wholesale pricing and business partnership inquiries'
             }
           </p>
         </div>
 
-        {/* Single Location Block */}
-        <div className="max-w-4xl mx-auto mb-16">
+        {/* Location and Map */}
+        <div className="max-w-6xl mx-auto mb-16">
           <Card className={`overflow-hidden border-border/50 hover:border-golden-primary/50 transition-all duration-300 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
             <div className="grid md:grid-cols-2 gap-0">
               {/* Location Info */}
@@ -98,19 +99,18 @@ const ContactSection = () => {
                 </div>
               </CardContent>
 
-              {/* Map Thumbnail */}
-              <div className="bg-muted relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-golden">
-                  <div className="text-center text-white p-8">
-                    <MapPin className="h-16 w-16 mx-auto mb-4 text-golden-light" />
-                    <h3 className="text-xl font-bold mb-2">
-                      {isRTL ? 'موقعنا' : 'Our Location'}
-                    </h3>
-                    <p className="text-white/90">
-                      {isRTL ? 'انقر لعرض الموقع على الخريطة' : 'Click to view location on map'}
-                    </p>
-                  </div>
-                </div>
+              {/* Embedded Map */}
+              <div className="bg-muted relative overflow-hidden min-h-[400px]">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14292.160086051024!2d50.01926195708667!3d26.422185032368574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49fd0007ec3123%3A0xb0cccdb3a1c58374!2z2LnZh9ivINin2YTZitmI2YUgMg!5e0!3m2!1sen!2str!4v1752830526757!5m2!1sen!2str"
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0 w-full h-full"
+                />
               </div>
             </div>
           </Card>
@@ -119,16 +119,16 @@ const ContactSection = () => {
         {/* General Contact Info */}
         <div className="text-center bg-primary rounded-2xl p-8 text-white">
           <h3 className={`text-2xl font-bold mb-4 text-golden-light ${isRTL ? 'font-arabic' : 'font-latin'}`}>
-            {isRTL ? 'للطلبات والاستفسارات العامة' : 'For General Orders & Inquiries'}
+            {isRTL ? 'للاستفسارات التجارية والشراكات' : 'For Business Inquiries & Partnerships'}
           </h3>
           <p className={`text-lg mb-6 text-white/90 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
             {isRTL 
-              ? 'تواصل معنا مباشرة عبر واتساب لطلب سريع وخدمة مميزة'
-              : 'Contact us directly via WhatsApp for quick orders and premium service'
+              ? 'تواصل معنا مباشرة عبر واتساب للحصول على أسعار الجملة وخدمات الشركاء التجاريين'
+              : 'Contact us directly via WhatsApp for wholesale pricing and business partnership services'
             }
           </p>
           <Button
-            onClick={() => handleWhatsAppContact('966555000000', isRTL ? 'الخط العام' : 'General Line')}
+            onClick={() => handleWhatsAppContact('966555000000', isRTL ? 'الخط التجاري' : 'Business Line')}
             className="bg-golden-primary text-primary hover:bg-golden-light transition-colors px-8 py-3 text-lg font-semibold hover-lift"
           >
             <MessageCircle className={`h-5 w-5 ${isRTL ? 'ml-2' : 'mr-2'}`} />
