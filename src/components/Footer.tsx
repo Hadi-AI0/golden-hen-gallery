@@ -29,11 +29,11 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-6">
               <img 
                 src="/lovable-uploads/4f95bf68-a406-4c23-9f4e-314b3786331a.png" 
-                alt="Golden Hen Logo"
+                alt="ahd alyoom Logo"
                 className="h-10 w-10"
               />
               <span className="text-2xl font-bold text-golden-light">
-                {isRTL ? 'الدجاجة الذهبية' : 'Golden Hen'}
+                {isRTL ? 'عهد اليوم' : 'ahd alyoom'}
               </span>
             </div>
             <p className="text-white/80 leading-relaxed mb-6 max-w-md">
@@ -89,7 +89,7 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-golden-primary flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-white/80">info@goldenhen.sa</p>
+                  <p className="text-white/80">info@ahdalyoom.sa</p>
                   <p className="text-sm text-white/60">
                     {isRTL ? 'البريد الإلكتروني' : 'Email'}
                   </p>
@@ -116,8 +116,8 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className={`text-white/60 text-sm ${isRTL ? 'font-arabic' : 'font-latin'}`}>
               {isRTL 
-                ? `© ${new Date().getFullYear()} الدجاجة الذهبية. جميع الحقوق محفوظة.`
-                : `© ${new Date().getFullYear()} Golden Hen. All rights reserved.`
+                ? `© ${new Date().getFullYear()} عهد اليوم. جميع الحقوق محفوظة.`
+                : `© ${new Date().getFullYear()} ahd alyoom. All rights reserved.`
               }
             </p>
             

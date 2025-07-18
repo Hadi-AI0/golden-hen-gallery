@@ -28,11 +28,11 @@ const Navigation = () => {
           <div className="flex items-center space-x-2">
             <img 
               src="/lovable-uploads/4f95bf68-a406-4c23-9f4e-314b3786331a.png" 
-              alt="Golden Hen Logo"
+              alt="ahd alyoom Logo"
               className="h-8 w-8"
             />
             <span className="text-xl font-bold text-primary-foreground">
-              {isRTL ? 'الدجاجة الذهبية' : 'Golden Hen'}
+              {isRTL ? 'عهد اليوم' : 'ahd alyoom'}
             </span>
           </div>
 

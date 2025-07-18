@@ -2,7 +2,9 @@ import React from 'react';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import HeroCarousel from '@/components/HeroCarousel';
-import Model3D from '@/components/Model3D';
+import SignatureProductSection from '@/components/Model3D';
+import FAQSection from '@/components/FAQSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import ProductGrid from '@/components/ProductGrid';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
@@ -16,9 +18,11 @@ const Index = () => {
         <Navigation />
         <main>
           <HeroCarousel />
-          <Model3D />
+          <SignatureProductSection />
           <ProductGrid />
+          <TestimonialsSection />
           <AboutSection />
+          <FAQSection />
           <ContactSection />
           <Newsletter />
         </main>

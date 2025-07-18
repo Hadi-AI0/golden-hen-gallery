@@ -7,43 +7,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 const ContactSection = () => {
   const { t, isRTL } = useLanguage();
 
-  const locations = [
-    {
-      id: '1',
-      nameEn: 'Riyadh - Al Malaz',
-      nameAr: 'الرياض - الملز',
-      addressEn: 'King Fahd Road, Al Malaz District',
-      addressAr: 'طريق الملك فهد، حي الملز',
-      phone: '+966 11 234 5678',
-      hours: isRTL ? 'السبت - الخميس: 8:00 ص - 10:00 م' : 'Sat - Thu: 8:00 AM - 10:00 PM',
-      whatsapp: '966112345678'
-    },
-    {
-      id: '2',
-      nameEn: 'Jeddah - Al Hamra',
-      nameAr: 'جدة - الحمراء',
-      addressEn: 'Prince Sultan Road, Al Hamra District',
-      addressAr: 'طريق الأمير سلطان، حي الحمراء',
-      phone: '+966 12 345 6789',
-      hours: isRTL ? 'السبت - الخميس: 8:00 ص - 10:00 م' : 'Sat - Thu: 8:00 AM - 10:00 PM',
-      whatsapp: '966123456789'
-    },
-    {
-      id: '3',
-      nameEn: 'Dammam - Al Faisaliyah',
-      nameAr: 'الدمام - الفيصلية',
-      addressEn: 'King Saud Road, Al Faisaliyah District',
-      addressAr: 'طريق الملك سعود، حي الفيصلية',
-      phone: '+966 13 456 7890',
-      hours: isRTL ? 'السبت - الخميس: 8:00 ص - 10:00 م' : 'Sat - Thu: 8:00 AM - 10:00 PM',
-      whatsapp: '966134567890'
-    }
-  ];
+  const location = {
+    id: '1',
+    nameEn: 'Riyadh - Main Branch',
+    nameAr: 'الرياض - الفرع الرئيسي',
+    addressEn: 'King Fahd Road, Al Malaz District, Riyadh 12612',
+    addressAr: 'طريق الملك فهد، حي الملز، الرياض 12612',
+    phone: '+966 11 234 5678',
+    hours: isRTL ? 'السبت - الخميس: 8:00 ص - 10:00 م' : 'Sat - Thu: 8:00 AM - 10:00 PM',
+    whatsapp: '966112345678',
+    mapUrl: 'https://maps.google.com/?q=24.7136,46.6753'
+  };
 
   const handleWhatsAppContact = (whatsappNumber: string, locationName: string) => {
     const message = isRTL 
-      ? `مرحباً! أود الاستفسار عن خدماتكم في فرع ${locationName}`
-      : `Hello! I would like to inquire about your services at ${locationName} branch`;
+      ? `مرحباً! أود الاستفسار عن خدمات عهد اليوم في ${locationName}`
+      : `Hello! I would like to inquire about ahd alyoom services at ${locationName}`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
@@ -64,46 +43,77 @@ const ContactSection = () => {
           </p>
         </div>
 
-        {/* Locations Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {locations.map((location) => (
-            <Card 
-              key={location.id}
-              className={`hover-lift group border-border/50 hover:border-golden-primary/50 transition-all duration-300 ${isRTL ? 'font-arabic' : 'font-latin'}`}
-            >
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-primary group-hover:text-golden-primary transition-colors flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-golden-primary" />
+        {/* Single Location Block */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <Card className={`overflow-hidden border-border/50 hover:border-golden-primary/50 transition-all duration-300 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
+            <div className="grid md:grid-cols-2 gap-0">
+              {/* Location Info */}
+              <CardContent className="p-8">
+                <CardTitle className="text-2xl font-bold text-primary mb-4 flex items-center gap-3">
+                  <MapPin className="h-6 w-6 text-golden-primary" />
                   {isRTL ? location.nameAr : location.nameEn}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  {isRTL ? location.addressAr : location.addressEn}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-3 text-sm">
-                  <Phone className="h-4 w-4 text-golden-primary flex-shrink-0" />
-                  <span className="text-muted-foreground">{location.phone}</span>
-                </div>
                 
-                <div className="flex items-center gap-3 text-sm">
-                  <Clock className="h-4 w-4 text-golden-primary flex-shrink-0" />
-                  <span className="text-muted-foreground">{location.hours}</span>
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="h-5 w-5 text-golden-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="text-muted-foreground">
+                        {isRTL ? location.addressAr : location.addressEn}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <Phone className="h-5 w-5 text-golden-primary flex-shrink-0" />
+                    <span className="text-muted-foreground">{location.phone}</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <Clock className="h-5 w-5 text-golden-primary flex-shrink-0" />
+                    <span className="text-muted-foreground">{location.hours}</span>
+                  </div>
                 </div>
 
-                <Button
-                  onClick={() => handleWhatsAppContact(
-                    location.whatsapp, 
-                    isRTL ? location.nameAr : location.nameEn
-                  )}
-                  className="w-full btn-golden hover-lift group/btn mt-4"
-                >
-                  <MessageCircle className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'} group-hover/btn:scale-110 transition-transform`} />
-                  {isRTL ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}
-                </Button>
+                <div className="space-y-3">
+                  <Button
+                    onClick={() => handleWhatsAppContact(
+                      location.whatsapp, 
+                      isRTL ? location.nameAr : location.nameEn
+                    )}
+                    className="w-full btn-golden hover-lift group/btn"
+                  >
+                    <MessageCircle className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'} group-hover/btn:scale-110 transition-transform`} />
+                    {isRTL ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}
+                  </Button>
+                  
+                  <Button
+                    variant="outline"
+                    onClick={() => window.open(location.mapUrl, '_blank')}
+                    className="w-full hover:border-golden-primary hover:text-golden-primary"
+                  >
+                    <MapPin className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                    {isRTL ? 'عرض على الخريطة' : 'View on Map'}
+                  </Button>
+                </div>
               </CardContent>
-            </Card>
-          ))}
+
+              {/* Map Thumbnail */}
+              <div className="bg-muted relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-golden">
+                  <div className="text-center text-white p-8">
+                    <MapPin className="h-16 w-16 mx-auto mb-4 text-golden-light" />
+                    <h3 className="text-xl font-bold mb-2">
+                      {isRTL ? 'موقعنا' : 'Our Location'}
+                    </h3>
+                    <p className="text-white/90">
+                      {isRTL ? 'انقر لعرض الموقع على الخريطة' : 'Click to view location on map'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* General Contact Info */}

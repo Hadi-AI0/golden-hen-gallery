@@ -93,18 +93,18 @@ const ProductGrid = () => {
           </p>
         </div>
 
-        {/* Products Grid */}
+        {/* Products Grid - Smaller, Elegant Cards */}
         <div 
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
         >
           {products.map((product, index) => (
             <Card 
               key={product.id}
-              className={`scroll-reveal hover-lift group cursor-pointer border-border/50 hover:border-golden-primary/50 transition-all duration-300 ${isRTL ? 'font-arabic' : 'font-latin'}`}
+              className={`scroll-reveal hover-lift group cursor-pointer border-border/50 hover:border-golden-primary/50 transition-all duration-300 ${isRTL ? 'font-arabic' : 'font-latin'} relative overflow-hidden`}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardHeader className="p-0">
+              <CardHeader className="p-0 relative">
                 <div className="aspect-square overflow-hidden rounded-t-lg bg-muted">
                   <img
                     src={product.image}
@@ -112,17 +112,22 @@ const ProductGrid = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
+                {/* WhatsApp Order Ribbon */}
+                <div className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <MessageCircle className="h-3 w-3 inline mr-1" />
+                  {isRTL ? 'واتساب' : 'WhatsApp'}
+                </div>
               </CardHeader>
-              <CardContent className="p-6">
-                <CardTitle className="text-xl font-bold text-primary mb-2 group-hover:text-golden-primary transition-colors">
+              <CardContent className="p-3">
+                <CardTitle className="text-sm font-bold text-primary mb-1 group-hover:text-golden-primary transition-colors line-clamp-1">
                   {isRTL ? product.nameAr : product.nameEn}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground mb-4 leading-relaxed">
+                <CardDescription className="text-xs text-muted-foreground mb-2 line-clamp-2">
                   {isRTL ? product.descriptionAr : product.descriptionEn}
                 </CardDescription>
                 
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-bold text-golden-primary">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-bold text-golden-primary">
                     {product.price}
                   </span>
                 </div>
@@ -132,10 +137,11 @@ const ProductGrid = () => {
                     product.whatsappMessage, 
                     isRTL ? product.nameAr : product.nameEn
                   )}
-                  className="w-full btn-golden hover-lift group/btn"
+                  size="sm"
+                  className="w-full btn-golden hover-lift group/btn text-xs py-1"
                 >
-                  <MessageCircle className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'} group-hover/btn:scale-110 transition-transform`} />
-                  {t.orderWhatsApp}
+                  <MessageCircle className={`h-3 w-3 ${isRTL ? 'ml-1' : 'mr-1'} group-hover/btn:scale-110 transition-transform`} />
+                  {isRTL ? 'اشترِ عبر واتساب' : 'Order via WhatsApp'}
                 </Button>
               </CardContent>
             </Card>

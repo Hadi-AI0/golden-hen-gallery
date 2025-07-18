@@ -3,40 +3,43 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { CarouselSlide } from '@/types';
+import heroBg1 from '@/assets/hero-bg-1.jpg';
+import heroBg2 from '@/assets/hero-bg-2.jpg';
+import heroBg3 from '@/assets/hero-bg-3.jpg';
 
 const slides: CarouselSlide[] = [
   {
     id: '1',
-    image: '/lovable-uploads/ab8fe531-3541-4806-88e9-dfdf8c3f098c.png',
-    titleEn: 'Premium Fresh Chicken',
-    titleAr: 'دجاج طازج مميز',
+    image: heroBg1,
+    titleEn: 'ahd alyoom - Premium Fresh Chicken',
+    titleAr: 'عهد اليوم - دجاج طازج مميز',
     subtitleEn: 'Farm-fresh quality delivered to your doorstep',
     subtitleAr: 'جودة طازجة من المزرعة إلى باب منزلك',
     ctaEn: 'Order Now via WhatsApp',
     ctaAr: 'اطلب الآن عبر واتساب',
-    whatsappMessage: 'Hello! I would like to order premium fresh chicken.'
+    whatsappMessage: 'Hello! I would like to order premium fresh chicken from ahd alyoom.'
   },
   {
     id: '2',
-    image: '/lovable-uploads/b83dab92-4488-4b11-a28a-fccfb11a063f.png',
-    titleEn: 'Marinated Delights',
-    titleAr: 'أطباق متبلة شهية',
+    image: heroBg2,
+    titleEn: 'Expert Cuts & Marinated Delights',
+    titleAr: 'قطع خبيرة وأطباق متبلة شهية',
     subtitleEn: 'Pre-seasoned cuts ready for your convenience',
     subtitleAr: 'قطع متبلة جاهزة لراحتك',
     ctaEn: 'Explore Our Menu',
     ctaAr: 'استكشف قائمتنا',
-    whatsappMessage: 'Hi! I want to know more about your marinated chicken options.'
+    whatsappMessage: 'Hi! I want to know more about ahd alyoom marinated chicken options.'
   },
   {
     id: '3',
-    image: '/lovable-uploads/4f95bf68-a406-4c23-9f4e-314b3786331a.png',
+    image: heroBg3,
     titleEn: 'Golden Quality Promise',
     titleAr: 'وعد الجودة الذهبية',
     subtitleEn: 'Trusted by families across Saudi Arabia',
     subtitleAr: 'نثق بها العائلات في جميع أنحاء المملكة',
     ctaEn: 'Learn Our Story',
     ctaAr: 'تعرف على قصتنا',
-    whatsappMessage: 'Hello! I would like to learn more about your premium poultry products.'
+    whatsappMessage: 'Hello! I would like to learn more about ahd alyoom premium poultry products.'
   }
 ];
 
