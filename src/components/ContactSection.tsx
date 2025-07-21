@@ -1,13 +1,13 @@
-
 import React from 'react';
 import { MapPin, Clock, Phone, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-
 const ContactSection = () => {
-  const { t, isRTL } = useLanguage();
-
+  const {
+    t,
+    isRTL
+  } = useLanguage();
   const location = {
     id: '1',
     nameEn: 'Dammam - Main Branch',
@@ -19,17 +19,12 @@ const ContactSection = () => {
     whatsapp: '966131234567',
     mapUrl: 'https://maps.google.com/?q=26.422185032368574,50.01926195708667'
   };
-
   const handleWhatsAppContact = (whatsappNumber: string, locationName: string) => {
-    const message = isRTL 
-      ? `مرحباً! أود الاستفسار عن أسعار الجملة وخدمات الشركاء التجاريين في ${locationName}`
-      : `Hello! I would like to inquire about wholesale pricing and business partnership services at ${locationName}`;
+    const message = isRTL ? `مرحباً! أود الاستفسار عن أسعار الجملة وخدمات الشركاء التجاريين في ${locationName}` : `Hello! I would like to inquire about wholesale pricing and business partnership services at ${locationName}`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
-
-  return (
-    <section id="contact" className="py-20 bg-muted">
+  return <section id="contact" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className={`text-center mb-16 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
@@ -37,10 +32,7 @@ const ContactSection = () => {
             {isRTL ? 'اتصل بنا' : 'Contact Us'}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {isRTL 
-              ? 'زوروا فرعنا أو تواصلوا معنا عبر واتساب للاستفسار عن أسعار الجملة والشراكات التجارية'
-              : 'Visit our branch or contact us via WhatsApp for wholesale pricing and business partnership inquiries'
-            }
+            {isRTL ? 'زوروا فرعنا أو تواصلوا معنا عبر واتساب للاستفسار عن أسعار الجملة والشراكات التجارية' : 'Visit our branch or contact us via WhatsApp for wholesale pricing and business partnership inquiries'}
           </p>
         </div>
 
@@ -77,22 +69,12 @@ const ContactSection = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Button
-                    onClick={() => handleWhatsAppContact(
-                      location.whatsapp, 
-                      isRTL ? location.nameAr : location.nameEn
-                    )}
-                    className="w-full btn-golden hover-lift group/btn"
-                  >
+                  <Button onClick={() => handleWhatsAppContact(location.whatsapp, isRTL ? location.nameAr : location.nameEn)} className="w-full btn-golden hover-lift group/btn">
                     <MessageCircle className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'} group-hover/btn:scale-110 transition-transform`} />
                     {isRTL ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}
                   </Button>
                   
-                  <Button
-                    variant="outline"
-                    onClick={() => window.open(location.mapUrl, '_blank')}
-                    className="w-full hover:border-golden-primary hover:text-golden-primary"
-                  >
+                  <Button variant="outline" onClick={() => window.open(location.mapUrl, '_blank')} className="w-full hover:border-golden-primary hover:text-golden-primary">
                     <MapPin className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
                     {isRTL ? 'عرض على الخريطة' : 'View on Map'}
                   </Button>
@@ -101,16 +83,9 @@ const ContactSection = () => {
 
               {/* Embedded Map */}
               <div className="bg-muted relative overflow-hidden min-h-[400px]">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14292.160086051024!2d50.01926195708667!3d26.422185032368574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49fd0007ec3123%3A0xb0cccdb3a1c58374!2z2LnZh9ivINin2YTZitmI2YUgMg!5e0!3m2!1sen!2str!4v1752830526757!5m2!1sen!2str"
-                  width="100%"
-                  height="400"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0 w-full h-full"
-                />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14292.160086051024!2d50.01926195708667!3d26.422185032368574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49fd0007ec3123%3A0xb0cccdb3a1c58374!2z2LnZh9ivINin2YTZitmI2YUgMg!5e0!3m2!1sen!2str!4v1752830526757!5m2!1sen!2str" width="100%" height="400" style={{
+                border: 0
+              }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="absolute inset-0 w-full h-full" />
               </div>
             </div>
           </Card>
@@ -122,22 +97,14 @@ const ContactSection = () => {
             {isRTL ? 'للاستفسارات التجارية والشراكات' : 'For Business Inquiries & Partnerships'}
           </h3>
           <p className={`text-lg mb-6 text-white/90 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
-            {isRTL 
-              ? 'تواصل معنا مباشرة عبر واتساب للحصول على أسعار الجملة وخدمات الشركاء التجاريين'
-              : 'Contact us directly via WhatsApp for wholesale pricing and business partnership services'
-            }
+            {isRTL ? 'تواصل معنا مباشرة عبر واتساب للحصول على أسعار الجملة وخدمات الشركاء التجاريين' : 'Contact us directly via WhatsApp for wholesale pricing and business partnership services'}
           </p>
-          <Button
-            onClick={() => handleWhatsAppContact('966555000000', isRTL ? 'الخط التجاري' : 'Business Line')}
-            className="bg-golden-primary text-primary hover:bg-golden-light transition-colors px-8 py-3 text-lg font-semibold hover-lift"
-          >
+          <Button onClick={() => handleWhatsAppContact('966555000000', isRTL ? 'الخط التجاري' : 'Business Line')} className="bg-golden-primary text-primary hover:bg-golden-light transition-colors py-3 text-lg font-semibold hover-lift px-[10px]">
             <MessageCircle className={`h-5 w-5 ${isRTL ? 'ml-2' : 'mr-2'}`} />
             {isRTL ? 'واتساب: +966 555 000 000' : 'WhatsApp: +966 555 000 000'}
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactSection;
