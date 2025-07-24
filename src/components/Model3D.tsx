@@ -1,94 +1,137 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import spatchcockedChicken from '@/assets/spatchcocked-chicken.png';
+import { Button } from '@/components/ui/button';
+import { MessageCircle, Award, Truck, ShieldCheck } from 'lucide-react';
 
 const SignatureProductSection = () => {
   const { t, isRTL } = useLanguage();
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Scroll reveal animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    const elements = sectionRef.current?.querySelectorAll('.scroll-reveal');
+    elements?.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleWhatsAppOrder = () => {
+    const message = encodeURIComponent(
+      'Hello! I would like to inquire about your signature spatchcocked chicken for my restaurant/catering business. Please provide wholesale pricing and availability.'
+    );
+    window.open(`https://wa.me/966544062093?text=${message}`, '_blank');
+  };
 
   return (
-    <section className="py-16 bg-muted">
+    <section 
+      ref={sectionRef}
+      className="py-16 md:py-24 bg-gradient-to-br from-background via-muted/30 to-background"
+    >
       <div className="container mx-auto px-4">
-        <div className={`text-center mb-12 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            {isRTL ? 'منتجنا المميز للمطاعم' : 'Our Signature Product for Restaurants'}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {isRTL 
-              ? 'دجاج مسطح عالي الجودة، مُحضّر بعناية فائقة للمطاعم والمتاجر'
-              : 'Premium spatchcocked chicken, carefully prepared for restaurants and retailers'
-            }
-          </p>
-        </div>
-
-        <div className={`flex flex-col lg:flex-row items-center gap-12 ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
-          {/* Product Image */}
-          <div className="flex-1 flex justify-center">
-            <div className="relative max-w-lg w-full">
-              <img 
-                src={spatchcockedChicken}
-                alt={isRTL ? 'دجاج مسطح - منتج عهد اليوم المميز' : 'Spatchcocked Chicken - ahd alyoom Signature Product'}
-                className="w-full h-auto object-contain animate-fade-in hover:scale-105 transition-transform duration-300 drop-shadow-2xl"
-              />
-              <div className="absolute -bottom-4 -right-4 bg-golden-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold animate-pulse">
-                {isRTL ? 'طازج يومياً' : 'Fresh Daily'}
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Content Side */}
+          <div className={`space-y-6 md:space-y-8 ${isRTL ? 'lg:order-2 font-arabic' : 'lg:order-1 font-latin'}`}>
+            <div className="scroll-reveal">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
+                {isRTL ? 'منتجنا المميز للمطاعم' : 'Our Signature Product for Restaurants'}
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                {isRTL 
+                  ? 'دجاج مفلطح مُحضر بطريقة خاصة للمطاعم والمأكولات، يوفر طبخاً متساوياً ووقتاً أقل في المطبخ'
+                  : 'Specially prepared spatchcocked chicken for restaurants and catering, ensuring even cooking and reduced kitchen time'
+                }
+              </p>
+            </div>
+            
+            {/* Features */}
+            <div className="scroll-reveal space-y-4">
+              <div className="flex items-start space-x-3 rtl:space-x-reverse">
+                <div className="p-2 bg-gradient-to-r from-golden-primary to-golden-secondary rounded-lg">
+                  <Award className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-primary mb-1">
+                    {isRTL ? 'جودة مضمونة' : 'Guaranteed Quality'}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {isRTL ? 'مُحضر وفق أعلى معايير الجودة' : 'Prepared to the highest quality standards'}
+                  </p>
+                </div>
               </div>
+              
+              <div className="flex items-start space-x-3 rtl:space-x-reverse">
+                <div className="p-2 bg-gradient-to-r from-golden-primary to-golden-secondary rounded-lg">
+                  <Truck className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-primary mb-1">
+                    {isRTL ? 'توصيل سريع' : 'Fast Delivery'}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {isRTL ? 'توصيل طازج لمطبخك' : 'Fresh delivery to your kitchen'}
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3 rtl:space-x-reverse">
+                <div className="p-2 bg-gradient-to-r from-golden-primary to-golden-secondary rounded-lg">
+                  <ShieldCheck className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-primary mb-1">
+                    {isRTL ? 'معايير السلامة' : 'Safety Standards'}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {isRTL ? 'مُطابق لمعايير السلامة الغذائية' : 'Compliant with food safety standards'}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Slogan */}
+            <div className="scroll-reveal">
+              <div className="golden-accent inline-block text-sm md:text-base font-bold">
+                {isRTL ? 'عهد اليوم عهد كل يوم' : 'Today\'s Promise, Every Day\'s Promise'}
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="scroll-reveal">
+              <Button
+                onClick={handleWhatsAppOrder}
+                className="btn-golden-intense hover-lift px-6 md:px-8 py-3 md:py-4 text-base md:text-lg font-bold"
+              >
+                <MessageCircle className={`h-5 w-5 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                {isRTL ? 'استفسار تجاري' : 'Business Inquiry'}
+              </Button>
             </div>
           </div>
 
-          {/* Content */}
-          <div className={`flex-1 space-y-6 ${isRTL ? 'font-arabic text-right' : 'font-latin text-left'}`}>
-            <h3 className="text-2xl md:text-3xl font-bold text-primary">
-              {isRTL ? 'جودة تجارية لا تُضاهى' : 'Unmatched Commercial Quality'}
-            </h3>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {isRTL 
-                ? 'نحن نفخر بتقديم أفضل أنواع الدجاج الطازج من مزارع محلية مختارة بعناية للمطاعم والمتاجر. كل منتج يمر بفحوصات جودة صارمة لضمان أعلى المعايير التجارية.'
-                : 'We take pride in delivering the finest fresh poultry from carefully selected local farms to restaurants and retailers. Every product undergoes rigorous quality checks to ensure the highest commercial standards.'
-              }
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-golden-primary rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h4 className="font-semibold text-primary">
-                    {isRTL ? 'توريد يومي منتظم' : 'Regular Daily Supply'}
-                  </h4>
-                  <p className="text-muted-foreground">
-                    {isRTL 
-                      ? 'جداول توصيل ثابتة من المزارع المحلية'
-                      : 'Consistent delivery schedules from local farms'
-                    }
-                  </p>
-                </div>
+          {/* Image Side - New Unique Image */}
+          <div className={`${isRTL ? 'lg:order-1' : 'lg:order-2'} scroll-reveal`}>
+            <div className="relative">
+              <div className="model-container aspect-square rounded-2xl overflow-hidden shadow-elegant">
+                <img
+                  src="https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  alt={isRTL ? 'منتجنا المميز للمطاعم' : 'Our Signature Product for Restaurants'}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
               </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-golden-primary rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h4 className="font-semibold text-primary">
-                    {isRTL ? 'معايير تجارية صارمة' : 'Strict Commercial Standards'}
-                  </h4>
-                  <p className="text-muted-foreground">
-                    {isRTL 
-                      ? 'فحوصات جودة شاملة للمطاعم والمتاجر'
-                      : 'Comprehensive quality checks for restaurants and retailers'
-                    }
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-golden-primary rounded-full mt-2 flex-shrink-0"></div>
-                <div>
-                  <h4 className="font-semibold text-primary">
-                    {isRTL ? 'أسعار الجملة' : 'Wholesale Pricing'}
-                  </h4>
-                  <p className="text-muted-foreground">
-                    {isRTL 
-                      ? 'أسعار تنافسية للشركاء التجاريين'
-                      : 'Competitive pricing for business partners'
-                    }
-                  </p>
-                </div>
+              {/* Floating Badge */}
+              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-golden-primary to-golden-secondary text-primary px-4 py-2 rounded-full shadow-golden font-bold text-sm">
+                {isRTL ? 'منتج مميز' : 'Signature'}
               </div>
             </div>
           </div>
