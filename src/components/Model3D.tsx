@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import spatchcockedChicken from '@/assets/spatchcocked-chicken.png';
 
 const SignatureProductSection = () => {
   const { t, isRTL } = useLanguage();
@@ -15,8 +14,8 @@ const SignatureProductSection = () => {
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {isRTL 
-              ? 'دجاج مسطح عالي الجودة، مُحضّر بعناية فائقة للمطاعم والمتاجر'
-              : 'Premium spatchcocked chicken, carefully prepared for restaurants and retailers'
+              ? 'دجاج خام عالي الجودة في عبوات تجارية، مُحضّر بعناية فائقة للمطاعم والمتاجر'
+              : 'Premium raw chicken in commercial packaging, carefully prepared for restaurants and retailers'
             }
           </p>
         </div>
@@ -26,8 +25,8 @@ const SignatureProductSection = () => {
           <div className="flex-1 flex justify-center">
             <div className="relative max-w-lg w-full">
               <img 
-                src={spatchcockedChicken}
-                alt={isRTL ? 'دجاج مسطح - منتج عهد اليوم المميز' : 'Spatchcocked Chicken - ahd alyoom Signature Product'}
+                src="/lovable-uploads/3687534c-c1f3-4b36-a8c4-43ecd5eea837.png"
+                alt={isRTL ? 'دجاج خام في عبوة تجارية - منتج عهد اليوم المميز' : 'Raw Chicken in Commercial Package - ahd alyoom Signature Product'}
                 className="w-full h-auto object-contain animate-fade-in hover:scale-105 transition-transform duration-300 drop-shadow-2xl"
               />
               <div className="absolute -bottom-4 -right-4 bg-golden-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold animate-pulse">

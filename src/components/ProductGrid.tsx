@@ -1,6 +1,6 @@
 
-import React, { useEffect, useRef } from 'react';
-import { MessageCircle } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -78,12 +78,53 @@ const products: Product[] = [
     descriptionAr: 'شاورما متبلة جاهزة للطبخ، محضرة خصيصاً للمطاعم',
     image: '/lovable-uploads/cf6a17f0-01f6-4f9c-83e1-4db84246e5ce.png',
     whatsappMessage: 'Hi! I want to know about your seasoned shawarma for my restaurant. What are the wholesale rates?'
+  },
+  // Additional products for expanded view
+  {
+    id: '9',
+    nameEn: 'Chicken Giblets',
+    nameAr: 'قوانص الدجاج',
+    descriptionEn: 'Fresh chicken giblets, perfect for traditional soups and dishes',
+    descriptionAr: 'قوانص دجاج طازجة، مثالية للشوربات والأطباق التقليدية',
+    image: '/lovable-uploads/b6a72f99-4fad-4874-b263-73b6d46ff753.png',
+    whatsappMessage: 'Hello! I would like to order chicken giblets for my restaurant. Please provide wholesale pricing.'
+  },
+  {
+    id: '10',
+    nameEn: 'Chicken Feet',
+    nameAr: 'أقدام الدجاج',
+    descriptionEn: 'Fresh chicken feet, popular in Asian cuisine and traditional dishes',
+    descriptionAr: 'أقدام دجاج طازجة، شائعة في المطبخ الآسيوي والأطباق التقليدية',
+    image: '/lovable-uploads/4f95bf68-a406-4c23-9f4e-314b3786331a.png',
+    whatsappMessage: 'Hi! I need chicken feet for my restaurant menu. What are your wholesale rates?'
+  },
+  {
+    id: '11',
+    nameEn: 'Chicken Necks',
+    nameAr: 'رقبة الدجاج',
+    descriptionEn: 'Fresh chicken necks, excellent for stocks and traditional cooking',
+    descriptionAr: 'رقبة دجاج طازجة، ممتازة للمرق والطبخ التقليدي',
+    image: '/lovable-uploads/ab8fe531-3541-4806-88e9-dfdf8c3f098c.png',
+    whatsappMessage: 'Hello! I would like to inquire about chicken necks for my restaurant kitchen.'
+  },
+  {
+    id: '12',
+    nameEn: 'Chicken Hearts',
+    nameAr: 'قلوب الدجاج',
+    descriptionEn: 'Fresh chicken hearts, perfect for specialty dishes and appetizers',
+    descriptionAr: 'قلوب دجاج طازجة، مثالية للأطباق المتخصصة والمقبلات',
+    image: '/lovable-uploads/6b8f2215-fce7-4106-872a-66dbdbebf287.png',
+    whatsappMessage: 'Hi! I want to order chicken hearts for my restaurant. Please provide wholesale pricing.'
   }
 ];
 
 const ProductGrid = () => {
   const { t, isRTL } = useLanguage();
   const gridRef = useRef<HTMLDivElement>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Show only first 8 products initially
+  const displayedProducts = isExpanded ? products : products.slice(0, 8);
 
   // Scroll reveal animation
   useEffect(() => {
@@ -102,12 +143,16 @@ const ProductGrid = () => {
     cards?.forEach((card) => observer.observe(card));
 
     return () => observer.disconnect();
-  }, []);
+  }, [isExpanded]); // Re-run when products are expanded
 
   const handleWhatsAppOrder = (message: string, productName: string) => {
     const fullMessage = `${message} Product: ${productName}`;
     const encodedMessage = encodeURIComponent(fullMessage);
     window.open(`https://wa.me/966544062093?text=${encodedMessage}`, '_blank');
+  };
+
+  const handleExpandToggle = () => {
+    setIsExpanded(!isExpanded);
   };
 
   return (
@@ -136,7 +181,7 @@ const ProductGrid = () => {
           ref={gridRef}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6"
         >
-          {products.map((product, index) => (
+          {displayedProducts.map((product, index) => (
             <Card 
               key={product.id}
               className={`scroll-reveal hover-lift group cursor-pointer border-border/50 hover:border-golden-primary/50 transition-all duration-300 ${isRTL ? 'font-arabic' : 'font-latin'} relative overflow-hidden`}
@@ -185,15 +230,43 @@ const ProductGrid = () => {
           ))}
         </div>
 
-        {/* View All Button */}
+        {/* Expand/Collapse Button */}
         <div className="text-center mt-8 md:mt-12">
           <Button 
             variant="outline" 
             size="lg"
             className="hover-lift border-golden-primary text-golden-primary hover:bg-golden-primary hover:text-primary px-6 md:px-8"
-            onClick={() => window.open('https://wa.me/966544062093?text=Hello! I would like to see your complete product catalog for restaurants and catering.', '_blank')}
+            onClick={handleExpandToggle}
           >
-            {isRTL ? 'عرض كافة المنتجات' : 'View Complete Catalog'}
+            {isExpanded ? (
+              <>
+                {isRTL ? (
+                  <>
+                    <ChevronUp className="h-4 w-4 ml-2" />
+                    عرض أقل
+                  </>
+                ) : (
+                  <>
+                    <ChevronUp className="h-4 w-4 mr-2" />
+                    Show Less
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                {isRTL ? (
+                  <>
+                    <ChevronDown className="h-4 w-4 ml-2" />
+                    عرض كافة المنتجات
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="h-4 w-4 mr-2" />
+                    View Complete Catalog
+                  </>
+                )}
+              </>
+            )}
           </Button>
         </div>
       </div>
