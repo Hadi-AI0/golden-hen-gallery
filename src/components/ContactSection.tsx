@@ -1,177 +1,110 @@
-
-import React, { useEffect, useRef } from 'react';
-import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
+import React from 'react';
+import { MapPin, Clock, Phone, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 const ContactSection = () => {
-  const { t, isRTL } = useLanguage();
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  // Scroll reveal animation
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    const elements = sectionRef.current?.querySelectorAll('.scroll-reveal');
-    elements?.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleWhatsAppContact = () => {
-    const message = encodeURIComponent(
-      'Hello! I would like to get in touch with Ahd Alyoom for business inquiries. Please provide more information about your services.'
-    );
-    window.open(`https://wa.me/966544062093?text=${message}`, '_blank');
+  const {
+    t,
+    isRTL
+  } = useLanguage();
+  const location = {
+    id: '1',
+    nameEn: 'Dammam - Main Branch',
+    nameAr: 'الدمام - الفرع الرئيسي',
+    addressEn: 'Ahd Alyoom District, Dammam, Saudi Arabia',
+    addressAr: 'حي عهد اليوم، الدمام، المملكة العربية السعودية',
+    phone: '+966 13 123 4567',
+    hours: isRTL ? 'السبت - الخميس: 6:00 ص - 8:00 م' : 'Sat - Thu: 6:00 AM - 8:00 PM',
+    whatsapp: '966131234567',
+    mapUrl: 'https://maps.google.com/?q=26.422185032368574,50.01926195708667'
   };
-
-  const handleEmailContact = () => {
-    window.open('mailto:info@ahd-trade.com?subject=Business Inquiry - Ahd Alyoom', '_blank');
+  const handleWhatsAppContact = (whatsappNumber: string, locationName: string) => {
+    const message = isRTL ? `مرحباً! أود الاستفسار عن أسعار الجملة وخدمات الشركاء التجاريين في ${locationName}` : `Hello! I would like to inquire about wholesale pricing and business partnership services at ${locationName}`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
-
-  return (
-    <section 
-      id="contact" 
-      ref={sectionRef}
-      className="py-12 md:py-20 bg-gradient-to-br from-muted/30 to-background"
-    >
+  return <section id="contact" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className={`text-center mb-12 md:mb-16 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
-          <div className="scroll-reveal">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-4">
-              {isRTL ? 'تواصل معنا' : 'Contact Us'}
-            </h2>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              {isRTL 
-                ? 'نحن هنا لخدمتكم وتلبية احتياجاتكم التجارية. تواصلوا معنا اليوم'
-                : 'We\'re here to serve you and meet your business needs. Contact us today'
-              }
-            </p>
-            <div className="mt-4">
-              <span className="text-golden-gradient text-sm md:text-base font-bold">
-                {isRTL ? 'عهد اليوم عهد كل يوم' : 'Today\'s Promise, Every Day\'s Promise'}
-              </span>
-            </div>
-          </div>
+        <div className={`text-center mb-16 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            {isRTL ? 'اتصل بنا' : 'Contact Us'}
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {isRTL ? 'زوروا فرعنا أو تواصلوا معنا عبر واتساب للاستفسار عن أسعار الجملة والشراكات التجارية' : 'Visit our branch or contact us via WhatsApp for wholesale pricing and business partnership inquiries'}
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Contact Information */}
-          <div className={`space-y-6 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
-            <div className="scroll-reveal">
-              <h3 className="text-xl md:text-2xl font-bold text-primary mb-6">
-                {isRTL ? 'معلومات التواصل' : 'Contact Information'}
-              </h3>
-              
-              <div className="space-y-4">
-                {/* Phone */}
-                <div className="flex items-center space-x-3 rtl:space-x-reverse p-4 bg-card rounded-lg border border-border/50 hover:border-golden-primary/50 transition-colors hover:shadow-golden">
-                  <div className="p-2 bg-gradient-to-r from-golden-primary to-golden-secondary rounded-lg">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary">
-                      {isRTL ? 'الهاتف' : 'Phone'}
-                    </h4>
-                    <p className="text-muted-foreground">+966 54 406 2093</p>
-                  </div>
-                </div>
+        {/* Location and Map */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <Card className={`overflow-hidden border-border/50 hover:border-golden-primary/50 transition-all duration-300 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
+            <div className="grid md:grid-cols-2 gap-0">
+              {/* Location Info */}
+              <CardContent className="p-8">
+                <CardTitle className="text-2xl font-bold text-primary mb-4 flex items-center gap-3">
+                  <MapPin className="h-6 w-6 text-golden-primary" />
+                  {isRTL ? location.nameAr : location.nameEn}
+                </CardTitle>
                 
-                {/* Email */}
-                <div className="flex items-center space-x-3 rtl:space-x-reverse p-4 bg-card rounded-lg border border-border/50 hover:border-golden-primary/50 transition-colors hover:shadow-golden">
-                  <div className="p-2 bg-gradient-to-r from-golden-primary to-golden-secondary rounded-lg">
-                    <Mail className="h-5 w-5 text-primary" />
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="h-5 w-5 text-golden-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="text-muted-foreground">
+                        {isRTL ? location.addressAr : location.addressEn}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-primary">
-                      {isRTL ? 'البريد الإلكتروني' : 'Email'}
-                    </h4>
-                    <p className="text-muted-foreground">info@ahd-trade.com</p>
+                  
+                  <div className="flex items-center gap-3">
+                    <Phone className="h-5 w-5 text-golden-primary flex-shrink-0" />
+                    <span className="text-muted-foreground">{location.phone}</span>
                   </div>
-                </div>
-                
-                {/* Location */}
-                <div className="flex items-center space-x-3 rtl:space-x-reverse p-4 bg-card rounded-lg border border-border/50 hover:border-golden-primary/50 transition-colors hover:shadow-golden">
-                  <div className="p-2 bg-gradient-to-r from-golden-primary to-golden-secondary rounded-lg">
-                    <MapPin className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary">
-                      {isRTL ? 'الموقع' : 'Location'}
-                    </h4>
-                    <p className="text-muted-foreground">
-                      {isRTL ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Saudi Arabia'}
-                    </p>
+                  
+                  <div className="flex items-center gap-3">
+                    <Clock className="h-5 w-5 text-golden-primary flex-shrink-0" />
+                    <span className="text-muted-foreground">{location.hours}</span>
                   </div>
                 </div>
-                
-                {/* Business Hours */}
-                <div className="flex items-center space-x-3 rtl:space-x-reverse p-4 bg-card rounded-lg border border-border/50 hover:border-golden-primary/50 transition-colors hover:shadow-golden">
-                  <div className="p-2 bg-gradient-to-r from-golden-primary to-golden-secondary rounded-lg">
-                    <Clock className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-primary">
-                      {isRTL ? 'ساعات العمل' : 'Business Hours'}
-                    </h4>
-                    <p className="text-muted-foreground">
-                      {isRTL ? 'الأحد - الخميس: 8:00 ص - 6:00 م' : 'Sunday - Thursday: 8:00 AM - 6:00 PM'}
-                    </p>
-                  </div>
+
+                <div className="space-y-3">
+                  <Button onClick={() => handleWhatsAppContact(location.whatsapp, isRTL ? location.nameAr : location.nameEn)} className="w-full btn-golden hover-lift group/btn">
+                    <MessageCircle className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'} group-hover/btn:scale-110 transition-transform`} />
+                    {isRTL ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}
+                  </Button>
+                  
+                  <Button variant="outline" onClick={() => window.open(location.mapUrl, '_blank')} className="w-full hover:border-golden-primary hover:text-golden-primary">
+                    <MapPin className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                    {isRTL ? 'عرض على الخريطة' : 'View on Map'}
+                  </Button>
                 </div>
+              </CardContent>
+
+              {/* Embedded Map */}
+              <div className="bg-muted relative overflow-hidden min-h-[400px]">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14292.160086051024!2d50.01926195708667!3d26.422185032368574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49fd0007ec3123%3A0xb0cccdb3a1c58374!2z2LnZh9ivINin2YTZitmI2YUgMg!5e0!3m2!1sen!2str!4v1752830526757!5m2!1sen!2str" width="100%" height="400" style={{
+                border: 0
+              }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="absolute inset-0 w-full h-full" />
               </div>
             </div>
-            
-            {/* Contact Buttons */}
-            <div className="scroll-reveal flex flex-col sm:flex-row gap-4">
-              <Button
-                onClick={handleWhatsAppContact}
-                className="btn-golden-intense hover-lift flex-1 py-3 md:py-4"
-              >
-                <MessageCircle className={`h-5 w-5 ${isRTL ? 'ml-2' : 'mr-2'}`} />
-                {isRTL ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}
-              </Button>
-              
-              <Button
-                onClick={handleEmailContact}
-                variant="outline"
-                className="hover-lift flex-1 py-3 md:py-4 border-golden-primary text-golden-primary hover:bg-golden-primary hover:text-primary"
-              >
-                <Mail className={`h-5 w-5 ${isRTL ? 'ml-2' : 'mr-2'}`} />
-                {isRTL ? 'إرسال بريد إلكتروني' : 'Send Email'}
-              </Button>
-            </div>
-          </div>
+          </Card>
+        </div>
 
-          {/* Map */}
-          <div className="scroll-reveal">
-            <div className="h-96 md:h-[500px] rounded-xl overflow-hidden shadow-elegant border border-border/50">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3628.1950788616857!2d46.7249!3d24.6408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f02b35e5b7f3b%3A0x3b5f5e5b7e3f7f3b!2sRiyadh%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1697000000000!5m2!1sen!2sus"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={isRTL ? 'موقعنا على الخريطة' : 'Our Location'}
-              />
-            </div>
-          </div>
+        {/* General Contact Info */}
+        <div className="text-center bg-primary rounded-2xl p-8 text-white">
+          <h3 className={`text-2xl font-bold mb-4 text-golden-light ${isRTL ? 'font-arabic' : 'font-latin'}`}>
+            {isRTL ? 'للاستفسارات التجارية والشراكات' : 'For Business Inquiries & Partnerships'}
+          </h3>
+          <p className={`text-lg mb-6 text-white/90 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
+            {isRTL ? 'تواصل معنا مباشرة عبر واتساب للحصول على أسعار الجملة وخدمات الشركاء التجاريين' : 'Contact us directly via WhatsApp for wholesale pricing and business partnership services'}
+          </p>
+          <Button onClick={() => handleWhatsAppContact('966555000000', isRTL ? 'الخط التجاري' : 'Business Line')} className="bg-golden-primary text-primary hover:bg-golden-light transition-colors py-3 text-lg font-semibold hover-lift px-[10px]">
+            <MessageCircle className={`h-5 w-5 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+            {isRTL ? 'واتساب: +966 555 000 000' : 'WhatsApp: +966 555 000 000'}
+          </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactSection;
