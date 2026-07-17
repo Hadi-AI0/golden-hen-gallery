@@ -24,9 +24,36 @@ const Newsletter = () => {
       return;
     }
 
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast({
+        title: isRTL ? 'خطأ' : 'Error',
+        description: isRTL ? 'يرجى إدخال بريد إلكتروني صحيح' : 'Please enter a valid email address',
+        variant: 'destructive'
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate submission (replace with actual API endpoint if needed)
+    try {
+      // Replace with your Google Apps Script Web App URL for newsletter
+      const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+      // Send data to Google Sheets via Google Apps Script
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Important for Google Apps Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          timestamp: new Date().toISOString(),
+          source: 'newsletter'
+        })
+      });
     setTimeout(() => {
       toast({
         title: isRTL ? 'تم الاشتراك بنجاح!' : 'Successfully Subscribed!',
@@ -36,8 +63,18 @@ const Newsletter = () => {
       });
 
       setEmail('');
+          } catch (error) {
+      console.error('Error submitting newsletter:', error);
+      toast({
+        title: isRTL ? 'خطأ' : 'Error',
+        description: isRTL
+          ? 'حدث خطأ أثناء الاشتراك. يرجى المحاولة مرة أخرى'
+          : 'An error occurred while subscribing. Please try again',
+        variant: 'destructive'
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
