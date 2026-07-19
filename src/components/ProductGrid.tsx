@@ -1,6 +1,6 @@
 
-import React, { useEffect, useRef, useState } from 'react';
-import { MessageCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -45,69 +45,22 @@ const products: Product[] = [
   },
   {
     id: '5',
-    nameEn: 'Drumsticks',
-    nameAr: 'أرجل الدجاج',
-    descriptionEn: 'Fresh drumsticks, popular choice for restaurants and catering',
-    descriptionAr: 'أرجل دجاج طازجة، خيار شائع للمطاعم والمأكولات',
-    image: '/images/chicken-drumsticks.png',
-    whatsappMessage: 'Hello! I want to order drumsticks for my restaurant. What are your wholesale prices?'
-  },
-  {
-    id: '6',
     nameEn: 'Chicken Breasts',
     nameAr: 'صدور الدجاج',
     descriptionEn: 'Premium chicken breasts, ideal for healthy menu options',
     descriptionAr: 'صدور دجاج مميزة، مثالية لخيارات القائمة الصحية',
     image: '/images/chicken-tenders.jpg',
     whatsappMessage: 'Hi! I need chicken breasts for my restaurant menu. Please provide wholesale pricing.'
-  },
-  {
-    id: '7',
-    nameEn: 'Ground Chicken',
-    nameAr: 'دجاج مفروم',
-    descriptionEn: 'Fresh ground chicken, perfect for burgers, meatballs and specialty dishes',
-    descriptionAr: 'دجاج مفروم طازج، مثالي للبرغر وكرات اللحم والأطباق المتخصصة',
-    image: '/images/ground-chicken.png',
-    whatsappMessage: 'Hello! I would like to inquire about ground chicken for my restaurant kitchen.'
-  },
-  {
-    id: '8',
-    nameEn: 'Seasoned Shawarma',
-    nameAr: 'شاورما متبلة',
-    descriptionEn: 'Ready-to-cook seasoned shawarma, specially prepared for restaurants',
-    descriptionAr: 'شاورما متبلة جاهزة للطبخ، محضرة خصيصاً للمطاعم',
-    image: '/images/seasoned-shawarma.jpeg',
-    whatsappMessage: 'Hi! I want to know about your seasoned shawarma for my restaurant. What are the wholesale rates?'
-  },
-  // Additional products for expanded view
-  {
-    id: '9',
-    nameEn: 'Chicken Giblets',
-    nameAr: 'قوانص الدجاج',
-    descriptionEn: 'Fresh chicken giblets, perfect for traditional soups and dishes',
-    descriptionAr: 'قوانص دجاج طازجة، مثالية للشوربات والأطباق التقليدية',
-    image: '/images/chicken-cuts.jpg',
-    whatsappMessage: 'Hello! I would like to order chicken giblets for my restaurant. Please provide wholesale pricing.'
-  },
  
-  {
-    id: '10',
-    nameEn: 'Chicken Hearts',
-    nameAr: 'قلوب الدجاج',
-    descriptionEn: 'Fresh chicken hearts, perfect for specialty dishes and appetizers',
-    descriptionAr: 'قلوب دجاج طازجة، مثالية للأطباق المتخصصة والمقبلات',
-    image: '/images/liver.png',
-    whatsappMessage: 'Hi! I want to order chicken hearts for my restaurant. Please provide wholesale pricing.'
   }
 ];
 
 const ProductGrid = () => {
   const { t, isRTL } = useLanguage();
   const gridRef = useRef<HTMLDivElement>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
 
-  // Show only first 8 products initially
-  const displayedProducts = isExpanded ? products : products.slice(0, 8);
+    // Show only first 5 products initially (all products since we have exactly 5)
+  const displayedProducts = products;
 
   // Scroll reveal animation
   useEffect(() => {
@@ -126,7 +79,7 @@ const ProductGrid = () => {
     cards?.forEach((card) => observer.observe(card));
 
     return () => observer.disconnect();
-  }, [isExpanded]); // Re-run when products are expanded
+  }, []);
 
   const handleWhatsAppOrder = (message: string, productName: string) => {
     const fullMessage = `${message} Product: ${productName}`;
@@ -134,9 +87,6 @@ const ProductGrid = () => {
     window.open(`https://wa.me/966545165222?text=${encodedMessage}`, '_blank');
   };
 
-  const handleExpandToggle = () => {
-    setIsExpanded(!isExpanded);
-  };
 
   return (
     <section id="products" className="py-12 md:py-20 bg-background">
@@ -211,46 +161,6 @@ const ProductGrid = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* Expand/Collapse Button */}
-        <div className="text-center mt-8 md:mt-12">
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="hover-lift border-golden-primary text-golden-primary hover:bg-golden-primary hover:text-primary px-6 md:px-8"
-            onClick={handleExpandToggle}
-          >
-            {isExpanded ? (
-              <>
-                {isRTL ? (
-                  <>
-                    <ChevronUp className="h-4 w-4 ml-2" />
-                    عرض أقل
-                  </>
-                ) : (
-                  <>
-                    <ChevronUp className="h-4 w-4 mr-2" />
-                    Show Less
-                  </>
-                )}
-              </>
-            ) : (
-              <>
-                {isRTL ? (
-                  <>
-                    <ChevronDown className="h-4 w-4 ml-2" />
-                    عرض كافة المنتجات
-                  </>
-                ) : (
-                  <>
-                    <ChevronDown className="h-4 w-4 mr-2" />
-                    View Complete Catalog
-                  </>
-                )}
-              </>
-            )}
-          </Button>
         </div>
       </div>
     </section>
