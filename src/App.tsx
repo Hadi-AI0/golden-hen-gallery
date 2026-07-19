@@ -5,7 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import { logPageView } from "./lib/analytics";
+import { logPageView } from "./analytics";
 
 // Track page views on route change
 function AnalyticsTracker() {
