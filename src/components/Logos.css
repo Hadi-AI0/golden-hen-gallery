@@ -1,0 +1,67 @@
+.logos-section {
+  padding: 40px 0;
+  overflow: hidden;
+  background-color: #f8f9fa;
+}
+
+.logos-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.logos-track {
+  display: flex;
+  gap: 60px;
+  animation: scroll 30s linear infinite;
+  width: max-content;
+}
+
+.logos-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-item {
+  flex-shrink: 0;
+  width: 150px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.logo-item img:hover {
+  filter: grayscale(0%);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .logos-section {
+    padding: 30px 0;
+  }
+
+  .logo-item {
+    width: 120px;
+    height: 60px;
+  }
+
+  .logos-track {
+    gap: 40px;
+  }
+}
