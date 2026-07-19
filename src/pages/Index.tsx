@@ -3,6 +3,7 @@ import React from 'react';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import HeroCarousel from '@/components/HeroCarousel';
+import Logos from '@/components/Logos';
 import SignatureProductSection from '@/components/Model3D';
 import FAQSection from '@/components/FAQSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -20,6 +21,7 @@ const Index = () => {
         <Navigation />
         <main>
           <HeroCarousel />
+          <Logos />
           <SignatureProductSection />
           <ProductGrid />
           <RecipeCarousel />
