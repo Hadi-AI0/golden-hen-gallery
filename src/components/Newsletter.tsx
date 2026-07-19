@@ -54,7 +54,7 @@ const Newsletter = () => {
           source: 'newsletter'
         })
       });
-    setTimeout(() => {
+
       toast({
         title: isRTL ? 'تم الاشتراك بنجاح!' : 'Successfully Subscribed!',
         description: isRTL
@@ -63,7 +63,7 @@ const Newsletter = () => {
       });
 
       setEmail('');
-          } catch (error) {
+    } catch (error) {
       console.error('Error submitting newsletter:', error);
       toast({
         title: isRTL ? 'خطأ' : 'Error',
