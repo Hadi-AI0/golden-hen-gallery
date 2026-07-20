@@ -15,9 +15,12 @@ const Navigation = () => {
 
   const navItems = [
     { key: 'home', href: '#home' },
+    { key: 'contact', href: '#contact' },
     { key: 'products', href: '#products' },
     { key: 'about', href: '#about' },
-    { key: 'contact', href: '#contact' }
+    { key: 'testimonials', href: '#testimonials' },
+    { key: 'faq', href: '#faq' },
+    { key: 'recipes', href: '#recipes' }
   ];
 
   return (

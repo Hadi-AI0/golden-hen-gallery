@@ -10,6 +10,9 @@ export interface TranslationKeys {
   products: string;
   about: string;
   contact: string;
+  testimonials: string;
+  faq: string;
+  recipes: string;
   
   // Hero Section
   heroTitle: string;
