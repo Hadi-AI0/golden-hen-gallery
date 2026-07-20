@@ -20,6 +20,9 @@ const translations: Record<string, TranslationKeys> = {
     products: 'المنتجات',
     about: 'من نحن',
     contact: 'اتصل بنا',
+    testimonials: 'آراء العملاء',
+    faq: 'الأسئلة الشائعة',
+    recipes: 'الوصفات',
     
     // Hero Section
     heroTitle: 'دجاج طازج وعالي الجودة',
@@ -57,6 +60,9 @@ const translations: Record<string, TranslationKeys> = {
     products: 'Products',
     about: 'About Us',
     contact: 'Contact',
+    testimonials: 'Testimonials',
+    faq: 'FAQ',
+    recipes: 'Recipes',
     
     // Hero Section
     heroTitle: 'Fresh, Premium Quality Poultry',
