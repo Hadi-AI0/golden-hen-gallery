@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { Send, Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -134,51 +134,58 @@ const ContactSection = () => {
               </div>
 
               <Card className="hover:shadow-lg transition-shadow">
-                <CardContent className="flex items-start gap-4 p-6">
-                  <div className="w-12 h-12 bg-golden-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-6 w-6 text-golden-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">
-                      {isRTL ? 'البريد الإلكتروني' : 'Email'}
-                    </h4>
-                    <p className="text-gray-600">info@yourcompany.com</p>
-                    <p className="text-gray-600">sales@yourcompany.com</p>
-                  </div>
+                <CardContent className="p-6">
+                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                    {isRTL ? 'جودة لا تضاهى' : 'Unmatched Quality'}
+                  </h4>
+                  <p className="text-gray-600">
+                    {isRTL
+                      ? 'كل منتج يخضع لعمليات فحص دقيقة لضمان أعلى المعايير التجارية.'
+                      : 'Every product undergoes rigorous quality checks to ensure the highest commercial standards.'
+                    }
+                  </p>
                 </CardContent>
               </Card>
 
               <Card className="hover:shadow-lg transition-shadow">
-                <CardContent className="flex items-start gap-4 p-6">
-                  <div className="w-12 h-12 bg-golden-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-6 w-6 text-golden-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">
-                      {isRTL ? 'الهاتف' : 'Phone'}
-                    </h4>
-                    <p className="text-gray-600">+971 XX XXX XXXX</p>
-                    <p className="text-gray-600">{isRTL ? 'متاح من الأحد إلى الخميس، ٩ ص - ٦ م' : 'Available Sun-Thu, 9 AM - 6 PM'}</p>
-                  </div>
+                <CardContent className="p-6">
+                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                    {isRTL ? 'توريد يومي منتظم' : 'Regular Daily Supply'}
+                  </h4>
+                  <p className="text-gray-600">
+                    {isRTL
+                      ? 'جداول توصيل ثابتة من المزارع المحلية'
+                      : 'Consistent delivery schedules from local farms'
+                    }
+                  </p>
                 </CardContent>
               </Card>
 
               <Card className="hover:shadow-lg transition-shadow">
-                <CardContent className="flex items-start gap-4 p-6">
-                  <div className="w-12 h-12 bg-golden-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-6 w-6 text-golden-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">
-                      {isRTL ? 'العنوان' : 'Address'}
-                    </h4>
-                    <p className="text-gray-600">
-                      {isRTL
-                        ? 'دبي، الإمارات العربية المتحدة'
-                        : 'Dubai, United Arab Emirates'
-                      }
-                    </p>
-                  </div>
+                <CardContent className="p-6">
+                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                    {isRTL ? 'معايير تجارية صارمة' : 'Strict Commercial Standards'}
+                  </h4>
+                  <p className="text-gray-600">
+                    {isRTL
+                      ? 'فحوصات جودة شاملة للمطاعم والمتاجر'
+                      : 'Comprehensive quality checks for restaurants and retailers'
+                    }
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                    {isRTL ? 'أسعار الجملة' : 'Wholesale Pricing'}
+                  </h4>
+                  <p className="text-gray-600">
+                    {isRTL
+                      ? 'أسعار تنافسية للشركاء التجاريين'
+                      : 'Competitive pricing for business partners.'
+                    }
+                  </p>
                 </CardContent>
               </Card>
 

@@ -112,7 +112,7 @@ const ProductGrid = () => {
         {/* Products Grid */}
         <div 
           ref={gridRef}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 lg:gap-6"
         >
           {displayedProducts.map((product, index) => (
             <Card 

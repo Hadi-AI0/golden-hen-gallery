@@ -1,8 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Mail } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 import { CarouselSlide } from '@/types';
 import heroBg1 from '@/assets/hero-bg-1.jpg';
 import heroBg2 from '@/assets/hero-bg-2.jpg';
@@ -46,8 +48,11 @@ const slides: CarouselSlide[] = [
 
 const HeroCarousel = () => {
   const { t, isRTL } = useLanguage();
+  const { toast } = useToast();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isSubmittingNewsletter, setIsSubmittingNewsletter] = useState(false);
 
   // Auto-advance slides
   useEffect(() => {
@@ -59,6 +64,56 @@ const HeroCarousel = () => {
 
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(newsletterEmail)) {
+      toast({
+        title: isRTL ? 'خطأ' : 'Error',
+        description: isRTL ? 'يرجى إدخال بريد إلكتروني صحيح' : 'Please enter a valid email address',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    setIsSubmittingNewsletter(true);
+
+    try {
+      const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: newsletterEmail,
+          timestamp: new Date().toISOString(),
+          source: 'hero_newsletter'
+        })
+      });
+
+      toast({
+        title: isRTL ? 'تم الاشتراك بنجاح!' : 'Successfully Subscribed!',
+        description: isRTL
+          ? 'شكراً لاشتراككم في نشرتنا الإخبارية للشركاء'
+          : 'Thank you for subscribing to our business partner newsletter',
+      });
+
+      setNewsletterEmail('');
+    } catch (error) {
+      console.error('Error submitting newsletter:', error);
+      toast({
+        title: isRTL ? 'خطأ' : 'Error',
+        description: isRTL
+          ? 'حدث خطأ أثناء الاشتراك. يرجى المحاولة مرة أخرى'
+          : 'An error occurred while subscribing. Please try again',
+        variant: 'destructive'
+      });
+    } finally {
+      setIsSubmittingNewsletter(false);
+    }
+  };
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -117,13 +172,40 @@ const HeroCarousel = () => {
                     </span>
                   </div>
                   
-                  <div className="pt-2 md:pt-4">
+                  <div className="pt-2 md:pt-4 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
                     <Button
                       onClick={() => handleWhatsAppOrder(slide.whatsappMessage)}
-                      className="btn-golden text-sm md:text-lg px-6 md:px-8 py-3 md:py-4 hover-lift"
+                      className="btn-golden text-sm md:text-lg px-6 md:px-8 py-3 md:py-4 hover-lift w-full sm:w-auto"
                     >
                       {isRTL ? slide.ctaAr : slide.ctaEn}
                     </Button>
+                    
+                    {/* Newsletter Form in Hero */}
+                    <form onSubmit={handleNewsletterSubmit} className="flex gap-2 w-full sm:w-auto max-w-xs">
+                      <Input
+                        type="email"
+                        value={newsletterEmail}
+                        onChange={(e) => setNewsletterEmail(e.target.value)}
+                        placeholder={isRTL ? 'البريد الإلكتروني للشركة' : 'Business Email'}
+                        className={`flex-1 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-golden-light h-12 md:h-14 ${isRTL ? 'text-right' : 'text-left'}`}
+                        disabled={isSubmittingNewsletter}
+                        dir={isRTL ? 'rtl' : 'ltr'}
+                      />
+                      <Button
+                        type="submit"
+                        disabled={isSubmittingNewsletter}
+                        className="btn-golden hover-lift whitespace-nowrap px-4 md:px-6 h-12 md:h-14"
+                      >
+                        {isSubmittingNewsletter ? (
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
+                        ) : (
+                          <>
+                            <Mail className={`h-4 w-4 ${isRTL ? 'ml-1' : 'mr-1'}`} />
+                            {isRTL ? 'اشتراك' : 'Subscribe'}
+                          </>
+                        )}
+                      </Button>
+                    </form>
                   </div>
                 </div>
               </div>
