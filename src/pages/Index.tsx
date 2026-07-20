@@ -4,14 +4,12 @@ import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import HeroCarousel from '@/components/HeroCarousel';
 import Logos from '@/components/Logos';
-import SignatureProductSection from '@/components/Model3D';
 import FAQSection from '@/components/FAQSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ProductGrid from '@/components/ProductGrid';
 import RecipeCarousel from '@/components/RecipeCarousel';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
-import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -22,14 +20,12 @@ const Index = () => {
         <main>
           <HeroCarousel />
           <Logos />
-          <SignatureProductSection />
-          <ProductGrid />
-          <RecipeCarousel />
-          <TestimonialsSection />
-          <AboutSection />
-          <FAQSection />
           <ContactSection />
-          <Newsletter />
+          <ProductGrid />
+          <AboutSection />
+          <TestimonialsSection />
+          <FAQSection />
+          <RecipeCarousel />
         </main>
         <Footer />
       </div>
