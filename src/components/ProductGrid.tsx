@@ -13,7 +13,7 @@ const products: Product[] = [
     nameAr: 'دجاج كامل',
     descriptionEn: 'Fresh whole chicken (700g-1400g), perfect for restaurants and catering',
     descriptionAr: 'دجاج كامل طازج (700-1400 جرام)، مثالي للمطاعم والمأكولات',
-    image: '/images/whole-chicken.png',
+    image: '/images/Ahd-whole-chicken.webp',
     whatsappMessage: 'Hello! I would like to inquire about wholesale pricing for whole fresh chicken (700g-1400g) for my restaurant/catering business.'
   },
   {
@@ -22,7 +22,7 @@ const products: Product[] = [
     nameAr: 'كبد الدجاج',
     descriptionEn: 'Fresh chicken liver, ideal for traditional dishes and restaurants',
     descriptionAr: 'كبد دجاج طازج، مثالي للأطباق التقليدية والمطاعم',
-    image: '/images/liver.png',
+    image: '/images/ahd-chicken-liver.webp',
     whatsappMessage: 'Hi! I want to order fresh chicken liver for my restaurant. Please provide wholesale rates.'
   },
   {
@@ -31,7 +31,7 @@ const products: Product[] = [
     nameAr: 'أجنحة الدجاج',
     descriptionEn: 'Premium chicken wings, perfect for appetizers and main courses',
     descriptionAr: 'أجنحة دجاج مميزة، مثالية للمقبلات والأطباق الرئيسية',
-    image: '/images/chicken-wings.jpg',
+    image: '/images/Ahd-chicken-wings.webp',
     whatsappMessage: 'Hello! I would like to know about bulk pricing for chicken wings for my restaurant.'
   },
   {
@@ -40,7 +40,7 @@ const products: Product[] = [
     nameAr: 'أفخاذ الدجاج',
     descriptionEn: 'Juicy chicken thighs, excellent for grilling and traditional cooking',
     descriptionAr: 'أفخاذ دجاج طرية، ممتازة للشواء والطبخ التقليدي',
-    image: '/images/chicken-cuts.jpg',
+    image: '/images/Ahd-chicken-thighs.webp',
     whatsappMessage: 'Hi! I am interested in wholesale chicken thighs for my catering business.'
   },
   {
@@ -49,7 +49,7 @@ const products: Product[] = [
     nameAr: 'صدور الدجاج',
     descriptionEn: 'Premium chicken breasts, ideal for healthy menu options',
     descriptionAr: 'صدور دجاج مميزة، مثالية لخيارات القائمة الصحية',
-    image: '/images/chicken-tenders.jpg',
+    image: '/images/Ahd-chicken-breasts.webp',
     whatsappMessage: 'Hi! I need chicken breasts for my restaurant menu. Please provide wholesale pricing.'
  
   }
