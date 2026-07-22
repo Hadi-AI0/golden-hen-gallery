@@ -6,9 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { CarouselSlide } from '@/types';
-import heroBg1 from '@/assets/Ahd-bg-shawarma.png';
-import heroBg2 from '@/assets/Ahd-bg-shawaya.png';
-import heroBg3 from '@/assets/Ahd-bg-KFC.png';
+import heroBg1 from '@/assets/Ahd-bg-shawarma.webp';
+import heroBg2 from '@/assets/Ahd-bg-shawwaya.webp';
+import heroBg3 from '@/assets/Ahd-bg-fried.webp';
 
 const slides: CarouselSlide[] = [
   {
