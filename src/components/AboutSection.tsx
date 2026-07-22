@@ -31,7 +31,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-primary text-white">
+    <section id="about" className="py-20 bg-gradient-to-b from-[#0B3D2E] to-[#0a2f24]">
       <div className="container mx-auto px-4">
         <div className={`grid lg:grid-cols-2 gap-12 items-center ${isRTL ? 'font-arabic' : 'font-latin'}`}>
           {/* Content */}

@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 // Google Analytics environment variable
 interface ImportMetaEnv {
   readonly VITE_GA_MEASUREMENT_ID?: string;
@@ -19,3 +17,8 @@ declare module '*.webp';
 
 // CSS imports
 declare module '*.css';
+
+// Crypto polyfill type
+interface Crypto {
+  randomUUID?: () => string;
+}

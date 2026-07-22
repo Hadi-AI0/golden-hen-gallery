@@ -22,7 +22,7 @@ const products: Product[] = [
     nameAr: 'كبد الدجاج',
     descriptionEn: 'Fresh chicken liver, ideal for traditional dishes and restaurants',
     descriptionAr: 'كبد دجاج طازج، مثالي للأطباق التقليدية والمطاعم',
-    image: '/images/ahd-chicken-liver.webp',
+    image: '/images/Ahd-chicken-liver.webp',
     whatsappMessage: 'Hi! I want to order fresh chicken liver for my restaurant. Please provide wholesale rates.'
   },
   {
@@ -104,7 +104,7 @@ const ProductGrid = () => {
           </p>
           <div className="mt-4">
             <span className={`text-sm md:text-base text-golden-primary font-semibold ${isRTL ? 'font-arabic' : 'font-latin'}`}>
-              {isRTL ? 'عهد للتجارة عهد كل يوم' : 'Ahd Trade Promise, Every Day\'s Promise'}
+              {isRTL ? 'عهد اليوم عهد كل يوم' : 'Ahd Alyoum Promise, Every Day\'s Promise'}
             </span>
           </div>
         </div>

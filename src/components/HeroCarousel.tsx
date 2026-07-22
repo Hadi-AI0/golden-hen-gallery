@@ -6,18 +6,18 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { CarouselSlide } from '@/types';
-import heroBg1 from '@/assets/hero-bg-1.jpg';
-import heroBg2 from '@/assets/hero-bg-2.jpg';
-import heroBg3 from '@/assets/hero-bg-3.jpg';
+import heroBg1 from '@/assets/Ahd-bg-shawarma.png';
+import heroBg2 from '@/assets/Ahd-bg-shawaya.png';
+import heroBg3 from '@/assets/Ahd-bg-KFC.png';
 
 const slides: CarouselSlide[] = [
   {
     id: '1',
     image: heroBg1,
     titleEn: 'Ahd Trade - Premium Poultry for Restaurants',
-    titleAr: 'عهد للتجارة - دواجن مميزة للمطاعم',
+    titleAr: 'عهد للتجارة - دجاج فاخر لكل المطاعم',
     subtitleEn: 'Today\'s Promise, Every Day\'s Promise - Serving restaurants, catering, and retailers across Saudi Arabia',
-    subtitleAr: 'عهد للتجارة عهد كل يوم - نخدم المطاعم والمأكولات والمتاجر في جميع أنحاء المملكة',
+    subtitleAr: 'نخدم المطاعم والمتاجر في جميع أنحاء المملكة',
     ctaEn: 'Get Wholesale Pricing',
     ctaAr: 'احصل على أسعار الجملة',
     whatsappMessage: 'Hello! I would like to inquire about wholesale pricing for restaurants/catering business from Ahd Trade.'
@@ -26,9 +26,9 @@ const slides: CarouselSlide[] = [
     id: '2',
     image: heroBg2,
     titleEn: 'Fresh Quality for Professional Kitchens',
-    titleAr: 'جودة طازجة للمطابخ المهنية',
+    titleAr: 'جودة ممتازة للمطابخ المهنية',
     subtitleEn: 'Consistent supply of premium poultry products for restaurants and catering businesses',
-    subtitleAr: 'توريد ثابت لمنتجات الدواجن المميزة للمطاعم وشركات المأكولات',
+    subtitleAr: 'توريد ثابت لمنتجات الدواجن للمطاعم وشركات المأكولات',
     ctaEn: 'View Product Catalog',
     ctaAr: 'عرض كتالوج المنتجات',
     whatsappMessage: 'Hi! I want to see the complete product catalog for restaurants from Ahd Trade.'
@@ -37,9 +37,9 @@ const slides: CarouselSlide[] = [
     id: '3',
     image: heroBg3,
     titleEn: 'Trusted Partner for Food Service',
-    titleAr: 'شريك موثوق لخدمات الطعام',
+    titleAr: 'شريكك الموثوق لخدمات الطعام',
     subtitleEn: 'Reliable delivery, competitive pricing, and consistent quality for your business success',
-    subtitleAr: 'توصيل موثوق وأسعار تنافسية وجودة ثابتة لنجاح أعمالكم',
+    subtitleAr: 'توصيل موثوق وأسعار تنافسية وجودة ثابتة',
     ctaEn: 'Become a Partner',
     ctaAr: 'كن شريكاً معنا',
     whatsappMessage: 'Hello! I would like to become a business partner with Ahd Trade for my restaurant/retail business.'
@@ -81,7 +81,7 @@ const HeroCarousel = () => {
     setIsSubmittingNewsletter(true);
 
     try {
-      const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDRvJRvKw-bWVeM7747MBzpWToMEMCf6_NNhGQeOY8k0f93gpd6QzqmYQIY0orh-4/exec';
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -150,8 +150,7 @@ const HeroCarousel = () => {
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: `linear-gradient(rgba(11, 61, 46, 0.7), rgba(11, 61, 46, 0.5)), url(${slide.image})`
-              }}
+                backgroundImage: `linear-gradient(rgba(11, 61, 46, 0.5), rgba(11, 61, 46, 0.3)), url(${slide.image})`              }}
             />
             
             {/* Content Overlay */}
@@ -168,7 +167,7 @@ const HeroCarousel = () => {
                   {/* Slogan */}
                   <div className="py-2 md:py-4">
                     <span className={`text-golden-light text-sm md:text-lg lg:text-xl font-semibold ${isRTL ? 'font-arabic' : 'font-latin'}`}>
-                      {isRTL ? 'عهد للتجارة عهد كل يوم' : 'Today\'s Promise, Every Day\'s Promise'}
+                      {isRTL ? 'عهد اليوم عهد كل يوم' : 'Today\'s Promise, Every Day\'s Promise'}
                     </span>
                   </div>
                   
@@ -217,23 +216,20 @@ const HeroCarousel = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className={`absolute top-1/2 transform -translate-y-1/2 ${isRTL ? 'right-2 md:right-4' : 'left-2 md:left-4'} bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full transition-all duration-200 hover-lift z-10`}
-        aria-label="Previous slide"
+        className={`absolute top-1/2 transform -translate-y-1/2 ${isRTL ? 'right-2 md:right-4' : 'left-2 md:left-4'} bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full transition-all duration-200 hover-lift z-20 pointer-events-auto`}        aria-label="Previous slide"
       >
         {isRTL ? <ChevronRight className="h-4 w-4 md:h-6 md:w-6" /> : <ChevronLeft className="h-4 w-4 md:h-6 md:w-6" />}
       </button>
       
       <button
         onClick={nextSlide}
-        className={`absolute top-1/2 transform -translate-y-1/2 ${isRTL ? 'left-2 md:left-4' : 'right-2 md:right-4'} bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full transition-all duration-200 hover-lift z-10`}
-        aria-label="Next slide"
+        className={`absolute top-1/2 transform -translate-y-1/2 ${isRTL ? 'left-2 md:left-4' : 'right-2 md:right-4'} bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full transition-all duration-200 hover-lift z-20 pointer-events-auto`}        aria-label="Next slide"
       >
         {isRTL ? <ChevronLeft className="h-4 w-4 md:h-6 md:w-6" /> : <ChevronRight className="h-4 w-4 md:h-6 md:w-6" />}
       </button>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 md:space-x-3 z-10">
-        {slides.map((_, index) => (
+      <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 md:space-x-3 z-20 pointer-events-auto">        {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}

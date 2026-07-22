@@ -39,7 +39,7 @@ const Newsletter = () => {
 
     try {
       // Replace with your Google Apps Script Web App URL for newsletter
-      const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDRvJRvKw-bWVeM7747MBzpWToMEMCf6_NNhGQeOY8k0f93gpd6QzqmYQIY0orh-4/exec';
 
       // Send data to Google Sheets via Google Apps Script
       await fetch(GOOGLE_SCRIPT_URL, {

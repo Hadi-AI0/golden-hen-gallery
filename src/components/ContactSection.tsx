@@ -22,7 +22,7 @@ const ContactSection = () => {
   });
 
   // Replace with your Google Apps Script Web App URL
-  const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDRvJRvKw-bWVeM7747MBzpWToMEMCf6_NNhGQeOY8k0f93gpd6QzqmYQIY0orh-4/exec';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,15 +102,14 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-16 bg-gradient-to-b from-[#0B3D2E] to-[#0a2f24]">      <div className="container mx-auto px-4">
         <div className={`max-w-6xl mx-auto ${isRTL ? 'font-arabic' : 'font-latin'}`}>
           {/* Section Header */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               {isRTL ? 'تواصل معنا' : 'Contact Us'}
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
               {isRTL
                 ? 'هل لديكم أي استفسارات؟ نحن هنا للمساعدة. تواصلوا معنا للحصول على معلومات حول منتجاتنا وأسعار الجملة والشراكات التجارية'
                 : 'Have any questions? We are here to help. Contact us for information about our products, wholesale pricing, and business partnerships'
@@ -121,24 +120,13 @@ const ContactSection = () => {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                  {isRTL ? 'معلومات الاتصال' : 'Contact Information'}
-                </h3>
-                <p className="text-gray-600 mb-8">
-                  {isRTL
-                    ? 'يمكنكم التواصل معنا عبر أي من القنوات التالية'
-                    : 'You can reach us through any of the following channels'
-                  }
-                </p>
-              </div>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="hover:shadow-lg transition-shadow bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-6">
-                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                  <h4 className="font-semibold text-white mb-2 text-lg">
                     {isRTL ? 'جودة لا تضاهى' : 'Unmatched Quality'}
                   </h4>
-                  <p className="text-gray-600">
+                  <p className="text-white/80">
                     {isRTL
                       ? 'كل منتج يخضع لعمليات فحص دقيقة لضمان أعلى المعايير التجارية.'
                       : 'Every product undergoes rigorous quality checks to ensure the highest commercial standards.'
@@ -147,12 +135,12 @@ const ContactSection = () => {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="hover:shadow-lg transition-shadow bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-6">
-                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                  <h4 className="font-semibold text-white mb-2 text-lg">
                     {isRTL ? 'توريد يومي منتظم' : 'Regular Daily Supply'}
                   </h4>
-                  <p className="text-gray-600">
+                  <p className="text-white/80">
                     {isRTL
                       ? 'جداول توصيل ثابتة من المزارع المحلية'
                       : 'Consistent delivery schedules from local farms'
@@ -161,12 +149,12 @@ const ContactSection = () => {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="hover:shadow-lg transition-shadow bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-6">
-                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                  <h4 className="font-semibold text-white mb-2 text-lg">
                     {isRTL ? 'معايير تجارية صارمة' : 'Strict Commercial Standards'}
                   </h4>
-                  <p className="text-gray-600">
+                  <p className="text-white/80">
                     {isRTL
                       ? 'فحوصات جودة شاملة للمطاعم والمتاجر'
                       : 'Comprehensive quality checks for restaurants and retailers'
@@ -175,12 +163,12 @@ const ContactSection = () => {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="hover:shadow-lg transition-shadow bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-6">
-                  <h4 className="font-semibold text-gray-900 mb-2 text-lg">
+                  <h4 className="font-semibold text-white mb-2 text-lg">
                     {isRTL ? 'أسعار الجملة' : 'Wholesale Pricing'}
                   </h4>
-                  <p className="text-gray-600">
+                  <p className="text-white/80">
                     {isRTL
                       ? 'أسعار تنافسية للشركاء التجاريين'
                       : 'Competitive pricing for business partners.'
@@ -188,40 +176,20 @@ const ContactSection = () => {
                   </p>
                 </CardContent>
               </Card>
-
-              {/* Business Hours */}
-              <Card className="bg-gradient-dark text-white">
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-golden-light mb-4">
-                    {isRTL ? 'ساعات العمل' : 'Business Hours'}
-                  </h4>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span>{isRTL ? 'الأحد - الخميس' : 'Sunday - Thursday'}</span>
-                      <span>9:00 AM - 6:00 PM</span>
-                    </div>
-                    <div className="flex justify-between text-white/60">
-                      <span>{isRTL ? 'الجمعة - السبت' : 'Friday - Saturday'}</span>
-                      <span>{isRTL ? 'مغلق' : 'Closed'}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
 
             {/* Contact Form */}
             <div>
-              <Card className="shadow-xl">
+              <Card className="shadow-xl bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold mb-6 text-gray-900">
+                  <h3 className="text-2xl font-semibold mb-6 text-white">
                     {isRTL ? 'أرسل لنا رسالة' : 'Send Us a Message'}
                   </h3>
 
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="name" className="text-gray-700">
-                          {isRTL ? 'الاسم *' : 'Name *'}
+                        <Label htmlFor="name" className="text-white/90">                          {isRTL ? 'الاسم *' : 'Name *'}
                         </Label>
                         <Input
                           id="name"
@@ -236,7 +204,7 @@ const ContactSection = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-gray-700">
+                        <Label htmlFor="email" className="text-white/90">
                           {isRTL ? 'البريد الإلكتروني *' : 'Email *'}
                         </Label>
                         <Input
@@ -255,7 +223,7 @@ const ContactSection = () => {
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-gray-700">
+                        <Label htmlFor="phone" className="text-white/90">
                           {isRTL ? 'رقم الهاتف' : 'Phone Number'}
                         </Label>
                         <Input
@@ -271,7 +239,7 @@ const ContactSection = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="company" className="text-gray-700">
+                        <Label htmlFor="company" className="text-white/90">
                           {isRTL ? 'اسم الشركة' : 'Company Name'}
                         </Label>
                         <Input
@@ -287,7 +255,7 @@ const ContactSection = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-gray-700">
+                      <Label htmlFor="subject" className="text-white/90">
                         {isRTL ? 'الموضوع' : 'Subject'}
                       </Label>
                       <Input
@@ -302,7 +270,7 @@ const ContactSection = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-gray-700">
+                      <Label htmlFor="message" className="text-white/90">
                         {isRTL ? 'الرسالة *' : 'Message *'}
                       </Label>
                       <Textarea

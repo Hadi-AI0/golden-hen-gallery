@@ -30,12 +30,12 @@ const Navigation = () => {
           {/* Logo */}
           <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
             <img
-              src="/lovable-uploads/4f95bf68-a406-4c23-9f4e-314b3786331a.png"
+              src="src/assets/Ahd-Logo.png"
               alt="Ahd Trade Logo"
-              className="h-8 w-8"
+              className="h-10 w-10"
             />
-            <span className="text-2xl md:text-3xl font-bold text-primary-foreground">
-              {isRTL ? 'عهد للتجارة' : 'Ahd Trade'}
+            <span className="text-2xl md:text-3xl font-bold text-golden-primary">
+              {isRTL ? 'عهد' : 'Ahd'}
             </span>
           </div>
 
@@ -46,7 +46,7 @@ const Navigation = () => {
                 <a
                   key={item.key}
                   href={item.href}
-                  className="text-primary-foreground hover:text-golden-light transition-colors duration-200 font-medium"
+                  className="text-white hover:text-golden-light transition-colors duration-200 font-medium"
                 >
                   {t[item.key as keyof typeof t]}
                 </a>
@@ -56,7 +56,7 @@ const Navigation = () => {
             {/* Language Toggle */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="text-primary-foreground hover:text-golden-light">
+                <Button variant="ghost" size="sm" className="text-white hover:text-golden-light">
                   <Globe className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
                   {currentLanguage.name}
                 </Button>
@@ -80,7 +80,7 @@ const Navigation = () => {
             {/* Mobile Language Toggle */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="text-primary-foreground">
+                <Button variant="ghost" size="sm" className="text-golden-primary">
                   <Globe className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -101,7 +101,7 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-primary-foreground"
+              className="text-golden-primary"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -116,7 +116,7 @@ const Navigation = () => {
                 <a
                   key={item.key}
                   href={item.href}
-                  className="text-primary-foreground hover:text-golden-light transition-colors duration-200 font-medium py-2"
+                  className="text-golden-primary hover:text-golden-light transition-colors duration-200 font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {t[item.key as keyof typeof t]}

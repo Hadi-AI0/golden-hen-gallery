@@ -21,18 +21,18 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-gradient-to-b from-[#0B3D2E] to-[#0a2f24] text-white">
       <div className="container mx-auto px-4 py-16">
         <div className={`grid md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className={`flex items-center mb-6 ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
               <img
-                src="/lovable-uploads/4f95bf68-a406-4c23-9f4e-314b3786331a.png"
+                src="src/assets/Ahd-Logo.png"
                 alt="Ahd Trade Logo"
                 className="h-10 w-10"
               />
-              <span className="text-2xl font-bold text-golden-light">
+              <span className="text-2xl font-bold text-golden-primary">
                 {isRTL ? 'عهد للتجارة' : 'Ahd Trade'}
               </span>
             </div>

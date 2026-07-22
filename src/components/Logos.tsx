@@ -19,21 +19,23 @@ const Logos: React.FC = () => {
   return (
     <section className="logos-section">
       <div className="logos-carousel">
-        <div className="logos-track">
-          {/* First set of logos */}
+        {/* FORCE LTR HERE: This ensures the duplicate set is always on the RIGHT */}
+        <div className="logos-track" dir="ltr" style={{ direction: 'ltr' }}>
+          {/* Set 1: Original Logos */}
           {logos.map((logo, index) => (
-            <div key={`logo-${index}`} className="logo-item">
+            <div key={`logo-original-${index}`} className="logo-item">
               <img src={logo.src} alt={logo.name} />
             </div>
           ))}
-          {/* Duplicate set for seamless loop */}
+          
+          {/* Set 2: Duplicate Logos (Must be identical order) */}
           {logos.map((logo, index) => (
             <div key={`logo-duplicate-${index}`} className="logo-item">
               <img src={logo.src} alt={logo.name} />
             </div>
           ))}
         </div>
-      </div>
+      </div> 
     </section>
   );
 };
