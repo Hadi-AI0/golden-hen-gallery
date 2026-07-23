@@ -1,6 +1,6 @@
 import React from 'react';
 import { MessageCircle, Mail, MapPin, Phone } from 'lucide-react';
-import logoImg from './path/to/Ahd-Logo.png';
+import logoImg from '../assets/Ahd-Logo.png'; 
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer: React.FC = () => {
