@@ -25,17 +25,16 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-16">
         <div className={`grid md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
           {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <div className={`flex items-center mb-6 ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
-              <img
-                src="../assets/Ahd-Logo.png"
-                alt="Ahd Trade Logo"
-                className="h-10 w-10"
-              />
-              <span className="text-2xl font-bold text-golden-primary">
-                {isRTL ? 'عهد للتجارة' : 'Ahd Trade'}
-              </span>
-            </div>
+          <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
+            <img
+              src={logoImg} // Use the variable here, NOT a string path
+              alt="Ahd Trade Logo"
+              className="h-10 w-10"
+            />
+            <span className="text-2xl md:text-3xl font-bold text-golden-primary">
+              {isRTL ? 'عهد' : 'Ahd'}
+            </span>
+          </div>
             <p className="text-white/80 leading-relaxed mb-6 max-w-md">
               {isRTL 
                 ? 'نحن نقدم أفضل أنواع الدجاج الطازج من مزارع محلية مختارة بعناية، مع الالتزام بأعلى معايير الجودة والسلامة لضمان رضا عملائنا.'
