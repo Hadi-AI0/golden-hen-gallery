@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage, languages } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
+import logoImg from '../assets/Ahd-Logo.png'; 
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,7 +31,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
             <img
-              src="../assets/Ahd-Logo.png"
+              src={logoImg} // Use the variable here, NOT a string path
               alt="Ahd Trade Logo"
               className="h-10 w-10"
             />
