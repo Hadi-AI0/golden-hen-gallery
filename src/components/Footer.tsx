@@ -28,7 +28,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className={`flex items-center mb-6 ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
               <img
-                src="src/assets/Ahd-Logo.png"
+                src="../assets/Ahd-Logo.png"
                 alt="Ahd Trade Logo"
                 className="h-10 w-10"
               />
