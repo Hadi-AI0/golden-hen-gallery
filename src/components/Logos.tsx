@@ -17,10 +17,11 @@ const logos = [
 
 const Logos: React.FC = () => {
   return (
-    <section className="logos-section">
+    // Force LTR on the section itself to prevent RTL inheritance
+    <section className="logos-section" dir="ltr">
       <div className="logos-carousel">
-        {/* FORCE LTR HERE: This ensures the duplicate set is always on the RIGHT */}
-        <div className="logos-track" dir="ltr" style={{ direction: 'ltr' }}>
+        {/* Force LTR and inline-block to break flex-reverse inheritance */}
+        <div className="logos-track" style={{ direction: 'ltr', display: 'flex' }}>
           {/* Set 1: Original Logos */}
           {logos.map((logo, index) => (
             <div key={`logo-original-${index}`} className="logo-item">
@@ -28,7 +29,7 @@ const Logos: React.FC = () => {
             </div>
           ))}
           
-          {/* Set 2: Duplicate Logos (Must be identical order) */}
+          {/* Set 2: Duplicate Logos */}
           {logos.map((logo, index) => (
             <div key={`logo-duplicate-${index}`} className="logo-item">
               <img src={logo.src} alt={logo.name} />
