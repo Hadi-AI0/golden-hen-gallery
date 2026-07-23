@@ -3,21 +3,24 @@
   overflow: hidden;
   background: #fff;
   padding: 2rem 0;
+  /* Ensure this section never flips */
+  direction: ltr !important; 
 }
 
 .logos-carousel {
   width: 100%;
   overflow: hidden;
   position: relative;
+  direction: ltr !important;
 }
 
 .logos-track {
-  display: flex;
+  display: flex !important; /* Force flex even if parent says otherwise */
+  flex-direction: row !important; /* Prevent row-reverse in RTL */
   gap: 3rem;
   width: max-content;
-  /* Ensure the track itself ignores parent RTL settings */
-  direction: ltr !important; 
-  animation: scroll 40s linear infinite;
+  animation: scroll 40s linear infinite; /* Slower speed for seamless loop */
+  will-change: transform; /* Performance optimization */
 }
 
 .logos-track:hover {
@@ -37,16 +40,15 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  /* Reduced grayscale from 100% to 20% for less grey look */
-  filter: grayscale(20%);
+  /* Less greyish as requested */
+  filter: grayscale(20%); 
   opacity: 0.9;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
 .logo-item img:hover {
   opacity: 1;
   filter: grayscale(0%);
-  transform: scale(1.05);
 }
 
 @keyframes scroll {
@@ -54,22 +56,23 @@
     transform: translateX(0);
   }
   100% {
-    /* Move exactly 50% of the total track width (which contains 2 sets) */
-    transform: translateX(-50%);
+    /* Move exactly 50% because we have 2 sets of logos */
+    transform: translateX(-50%); 
   }
 }
 
 @media (max-width: 768px) {
   .logos-section {
-    padding: 30px 0;
+    padding: 1rem 0;
   }
 
   .logo-item {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
 
   .logos-track {
-    gap: 2rem;
+    gap: 1.5rem;
+    animation-duration: 25s; /* Faster on mobile to cover less distance */
   }
 }
