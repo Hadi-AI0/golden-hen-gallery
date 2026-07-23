@@ -30,7 +30,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
             <img
-              src="src/assets/Ahd-Logo.png"
+              src="../assets/Ahd-Logo.png"
               alt="Ahd Trade Logo"
               className="h-10 w-10"
             />
