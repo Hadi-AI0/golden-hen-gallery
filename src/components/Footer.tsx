@@ -2,7 +2,7 @@ import React from 'react';
 import { MessageCircle, Mail, MapPin, Phone } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const { t, isRTL } = useLanguage();
 
   const quickLinks = [
@@ -13,7 +13,7 @@ const Footer = () => {
   ];
 
   const handleWhatsAppContact = () => {
-    const message = isRTL 
+    const message = isRTL
       ? 'مرحباً! أود الاستفسار عن منتجاتكم'
       : 'Hello! I would like to inquire about your products';
     const encodedMessage = encodeURIComponent(message);
@@ -25,22 +25,25 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-16">
         <div className={`grid md:grid-cols-2 lg:grid-cols-4 gap-8 ${isRTL ? 'font-arabic' : 'font-latin'}`}>
           {/* Brand Section */}
-          <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
-            <img
-              src={logoImg} // Use the variable here, NOT a string path
-              alt="Ahd Trade Logo"
-              className="h-10 w-10"
-            />
-            <span className="text-2xl md:text-3xl font-bold text-golden-primary">
-              {isRTL ? 'عهد' : 'Ahd'}
-            </span>
-          </div>
+          <div className="lg:col-span-2">
+            <div className={`flex items-center mb-6 ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
+              <img
+                src="src/assets/Ahd-Logo.png"
+                alt="Ahd Trade Logo"
+                className="h-10 w-10"
+              />
+              <span className="text-2xl font-bold text-golden-primary">
+                {isRTL ? 'عهد للتجارة' : 'Ahd Trade'}
+              </span>
+            </div>
+
             <p className="text-white/80 leading-relaxed mb-6 max-w-md">
-              {isRTL 
-                ? 'نحن نقدم أفضل أنواع الدجاج الطازج من مزارع محلية مختارة بعناية، مع الالتزام بأعلى معايير الجودة والسلامة لضمان رضا عملائنا.'
+              {isRTL
+                ? 'نحن نقدم أفضل أنواع الدجاج الطازج من مزارع محلية مختارة بعناية، مع الالتزام بأعلى معايير الجودة والسلامة لضمان رضا العملاء.'
                 : 'We provide the finest fresh poultry from carefully selected local farms, committed to the highest quality and safety standards to ensure customer satisfaction.'
               }
             </p>
+
             <button
               onClick={handleWhatsAppContact}
               className="inline-flex items-center gap-2 bg-golden-primary text-primary px-6 py-3 rounded-lg hover:bg-golden-light transition-colors font-semibold hover-lift"
@@ -74,36 +77,29 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-6 text-golden-light">
               {isRTL ? 'معلومات التواصل' : 'Contact Info'}
             </h3>
+
             <div className="space-y-4">
-              <div className="flex items-start gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}">
+              <div className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                 <Phone className="h-5 w-5 text-golden-primary flex-shrink-0 mt-1" />
                 <div>
                   <p className="text-white/80">+966 54 516 5222</p>
-                  <p className="text-sm text-white/60">
-                    {isRTL ? 'الخط الساخن' : 'Hotline'}
-                  </p>
+                  <p className="text-sm text-white/60">{isRTL ? 'الخط الساخن' : 'Hotline'}</p>
                 </div>
               </div>
-              
-              <div className="flex items-start gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}">
+
+              <div className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                 <Mail className="h-5 w-5 text-golden-primary flex-shrink-0 mt-1" />
                 <div>
                   <p className="text-white/80">info@ahd-trade.com</p>
-                  <p className="text-sm text-white/60">
-                    {isRTL ? 'البريد الإلكتروني' : 'Email'}
-                  </p>
+                  <p className="text-sm text-white/60">{isRTL ? 'البريد الإلكتروني' : 'Email'}</p>
                 </div>
               </div>
-              
-              <div className="flex items-start gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}">
+
+              <div className={`flex items-start gap-3 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                 <MapPin className="h-5 w-5 text-golden-primary flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-white/80">
-                    {isRTL ? 'المملكة العربية السعودية' : 'Saudi Arabia'}
-                  </p>
-                  <p className="text-sm text-white/60">
-                    {isRTL ? 'فروع متعددة' : 'Multiple Locations'}
-                  </p>
+                  <p className="text-white/80">{isRTL ? 'المملكة العربية السعودية' : 'Saudi Arabia'}</p>
+                  <p className="text-sm text-white/60">{isRTL ? 'فروع متعددة' : 'Multiple Locations'}</p>
                 </div>
               </div>
             </div>
@@ -112,21 +108,17 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-white/20 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className={`flex flex-col md:flex-row justify-between items-center gap-4`}>
             <p className={`text-white/60 text-sm ${isRTL ? 'font-arabic' : 'font-latin'}`}>
               {isRTL
                 ? `© ${new Date().getFullYear()} عهد للتجارة. جميع الحقوق محفوظة.`
                 : `© ${new Date().getFullYear()} Ahd Trade. All rights reserved.`
               }
             </p>
-            
+
             <div className={`flex items-center gap-6 text-sm ${isRTL ? 'font-arabic' : 'font-latin'}`}>
-              <a href="#" className="text-white/60 hover:text-golden-light transition-colors">
-                {isRTL ? 'سياسة الخصوصية' : 'Privacy Policy'}
-              </a>
-              <a href="#" className="text-white/60 hover:text-golden-light transition-colors">
-                {isRTL ? 'الشروط والأحكام' : 'Terms & Conditions'}
-              </a>
+              <a href="#" className="text-white/60 hover:text-golden-light transition-colors">{isRTL ? 'سياسة الخصوصية' : 'Privacy Policy'}</a>
+              <a href="#" className="text-white/60 hover:text-golden-light transition-colors">{isRTL ? 'الشروط والأحكام' : 'Terms & Conditions'}</a>
             </div>
           </div>
         </div>
